@@ -67,12 +67,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EditarCatalogo.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="Modificar-AgregarArticulo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditarCatalogo.aspx.cs">
+      <DependentUpon>EditarCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarCatalogo.aspx.designer.cs">
+      <DependentUpon>EditarCatalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modificar-AgregarArticulo.aspx.cs">
+      <DependentUpon>Modificar-AgregarArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modificar-AgregarArticulo.aspx.designer.cs">
+      <DependentUpon>Modificar-AgregarArticulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Master.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -80,6 +112,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="clases\clases.csproj">
+      <Project>{6edf89dc-63c0-4da1-ad6d-ee2c653025b3}</Project>
+      <Name>clases</Name>
+    </ProjectReference>
+    <ProjectReference Include="Metodos y Conexion\Metodos y Conexion.csproj">
+      <Project>{4c5834e5-dc24-42f7-956f-b487ed4e1de6}</Project>
+      <Name>Metodos y Conexion</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
