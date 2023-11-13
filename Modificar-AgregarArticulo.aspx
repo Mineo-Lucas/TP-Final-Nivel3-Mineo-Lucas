@@ -8,6 +8,10 @@
         </h1>
     </div>
     <div>
+        <asp:Label ID="Label8" runat="server" Text="Id:"></asp:Label>
+        <asp:TextBox ID="TxtId" runat="server"></asp:TextBox>
+    </div>
+    <div>
         <asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label>
         <asp:TextBox ID="TxtNombre" runat="server"></asp:TextBox>
     </div>
@@ -36,7 +40,8 @@
         <asp:DropDownList ID="DdlCategoria" runat="server"></asp:DropDownList>
     </div>
     <div>
-        <asp:Button ID="BtnAceptar" runat="server" Text="Modificar" OnClick="BtnAceptar_Click"/>
+        <asp:Button ID="BtnAceptar" runat="server" Text="Agregar" OnClick="BtnAceptar_Click"/>
+        <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" OnClick="BtnEliminar_Click"/>
         <a href="EditarCatalogo.aspx">Cancelar</a>
     </div>
 </asp:Content>

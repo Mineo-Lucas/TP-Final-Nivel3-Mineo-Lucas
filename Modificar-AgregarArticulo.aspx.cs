@@ -14,6 +14,7 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            TxtId.Enabled = false;
             if (!IsPostBack)
             {
                 MarcasMetodo marca = new MarcasMetodo();
@@ -27,6 +28,30 @@ namespace CatalogoWeb
                 DdlMarca.DataTextField = "marca";
                 DdlMarca.DataValueField = "id";
                 DdlMarca.DataBind();
+
+                string Id = Request.QueryString["Id"] != null ? Id = Request.QueryString["Id"].ToString() : Id = "";
+                if (Id!="")
+                {
+                    Metodos metodo= new Metodos();
+                    Articulo Seleccionado = (metodo.BuscarArticuloPorId(Id))[0];
+                    try
+                    {
+                        TxtId.Text=Id.ToString();
+                        TxtNombre.Text = Seleccionado.Nombre;
+                        TxtDescripcion.Text = Seleccionado.Descripcion;
+                        TxtPrecio.Text = Seleccionado.Precio.ToString();
+                        TxtCodigo.Text = Seleccionado.Codigo;
+                        TxtImagen.Text = Seleccionado.Imagen;
+                        DdlCategoria.SelectedValue = Seleccionado.categoria.Id.ToString();
+                        DdlMarca.SelectedValue = Seleccionado.Marca.id.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw ex;
+                    }
+                    BtnAceptar.Text = "Modificar";
+                }
             }
         }
 
@@ -34,18 +59,28 @@ namespace CatalogoWeb
         {
             Articulo nuevo = new Articulo();
             Metodos metodo = new Metodos();
-
-
             try
             {
                 nuevo.Nombre = TxtNombre.Text;
                 nuevo.Descripcion = TxtDescripcion.Text;
-                nuevo.Precio = int.Parse(TxtPrecio.Text);
+                nuevo.Precio = decimal.Parse(TxtPrecio.Text);
                 nuevo.Codigo = TxtCodigo.Text;
                 nuevo.Imagen = TxtImagen.Text;
-                nuevo.Marca.id = int.Parse(DdlMarca.SelectedItem.Value);
+                nuevo.Marca = new Marcas();
+                nuevo.Marca.id=int.Parse(DdlCategoria.SelectedItem.Value);
+                nuevo.categoria = new Categoria();
                 nuevo.categoria.Id = int.Parse(DdlCategoria.SelectedItem.Value);
-                metodo.AgregarArticulo(nuevo);
+
+                if (Request.QueryString["Id"] != null)
+                {
+                    nuevo.Id = int.Parse(TxtId.Text);
+                    metodo.Modificar(nuevo);
+                }
+                else
+                {
+                    metodo.AgregarArticulo(nuevo);
+                }
+                    Response.Redirect("EditarCatalogo.aspx", false);
             }
             catch (Exception ex)
             {
@@ -53,7 +88,24 @@ namespace CatalogoWeb
                 throw ex;
             }
         }
-            
 
+        protected void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            Metodos eliminar = new Metodos();
+            try
+            {
+                string id = Request.QueryString["Id"].ToString();
+                eliminar.eliminar(id);
+                Response.Redirect("EditarCatalogo" +
+                    ".aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+               
+            
+        }
     }
 }

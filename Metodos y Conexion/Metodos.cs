@@ -57,6 +57,51 @@ namespace Metodos_y_Conexion
             }
 
         }
+        public List<Articulo> BuscarArticuloPorId(string Id)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            ConexionDB conexion = new ConexionDB();
+
+            try
+            {
+                conexion.setearconsulta("select Codigo,Nombre,a.Descripcion,c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca,a.Id from ARTICULOS a, CATEGORIAS c, MARCAS m where c.Id=IdCategoria and m.Id=IdMarca and a.Id=@Id");
+                conexion.setearparametros("@Id", Id);
+                conexion.ejecutarlectura();
+
+                while (conexion.Lector.Read())
+                {
+                    Articulo arti = new Articulo();
+                    arti.Codigo = (string)conexion.Lector["Codigo"];
+                    arti.Nombre = (string)conexion.Lector["Nombre"];
+                    if (conexion.Lector != null)
+                    {
+                        arti.Imagen = (string)conexion.Lector["ImagenUrl"];
+                    }
+                    arti.Descripcion = (string)conexion.Lector["Descripcion"];
+                    arti.Precio = (decimal)conexion.Lector["Precio"];
+                    arti.Marca = new Marcas();
+                    arti.Marca.marca = (string)conexion.Lector["Marca"];
+                    arti.Marca.id = (int)conexion.Lector["IdMarca"];
+                    arti.categoria = new Categoria();
+                    arti.categoria.categoria = (string)conexion.Lector["categoria"];
+                    arti.categoria.Id = (int)conexion.Lector["IdCategoria"];
+                    arti.Id = (int)conexion.Lector["Id"];
+                    lista.Add(arti);
+                }
+
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarconexion();
+            }
+
+        }
         public void AgregarArticulo(Articulo elegido)
         {
             ConexionDB conex = new ConexionDB();
@@ -108,7 +153,7 @@ namespace Metodos_y_Conexion
             }
             finally { cone.cerrarconexion(); }
         }
-        public void eliminar(int articc)
+        public void eliminar(string articc)
         {
             ConexionDB con = new ConexionDB();
             try

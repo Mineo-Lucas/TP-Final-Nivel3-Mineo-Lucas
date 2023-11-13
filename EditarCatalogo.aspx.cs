@@ -21,7 +21,8 @@ namespace CatalogoWeb
 
         protected void DgvEditarCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string Id = DgvEditarCatalogo.SelectedDataKey.Value.ToString();
+            Response.Redirect("Modificar-AgregarArticulo.aspx?Id=" + Id, false);
         }
 
         protected void DgvEditarCatalogo_PageIndexChanging(object sender, GridViewPageEventArgs e)
