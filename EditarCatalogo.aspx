@@ -3,8 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Editar Catalogo
+    <div>
+        <h1>Editar Catalogo
     </h1>
+    </div>
+    <div>
+        <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
+        <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+        <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
+        <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
+        <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
+        <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"/>
+    </div>
     <asp:GridView runat="server" ID="DgvEditarCatalogo"
         DataKeyNames="Id" AutoGenerateColumns="false" CssClass="table table-dark border-danger"
         OnSelectedIndexChanged="DgvEditarCatalogo_SelectedIndexChanged" OnSelectedPageChanging="DgvEditarCatalogo_SelectedIndexChanging">

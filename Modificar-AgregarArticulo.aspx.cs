@@ -96,8 +96,7 @@ namespace CatalogoWeb
             {
                 string id = Request.QueryString["Id"].ToString();
                 eliminar.eliminar(id);
-                Response.Redirect("EditarCatalogo" +
-                    ".aspx", false);
+                Response.Redirect("EditarCatalogo.aspx", false);
             }
             catch (Exception ex)
             {
