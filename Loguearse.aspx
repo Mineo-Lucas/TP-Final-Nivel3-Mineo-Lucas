@@ -16,7 +16,7 @@
         <asp:TextBox ID="TxtContraseña" runat="server"></asp:TextBox>
     </div>
     <div>
-        <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" />
+        <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" onclick="BtnLoguearse_Click"/>
         <a href="Home.aspx">Cancelar</a>
     </div>
 </asp:Content>

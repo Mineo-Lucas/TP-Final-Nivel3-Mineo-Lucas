@@ -14,6 +14,7 @@ namespace clases
         public string Contraseña { get; set; }
         public string Imagen { get; set; }
         public bool Admin { get; set; }
+        public int Id { get; set;}
 
     }
 }

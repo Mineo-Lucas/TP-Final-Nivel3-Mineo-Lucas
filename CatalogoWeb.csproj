@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EditarCatalogo.aspx" />
+    <Content Include="EditarMiPerfil.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Loguearse.aspx" />
     <Content Include="Modificar-AgregarArticulo.aspx" />
@@ -81,6 +82,13 @@
     </Compile>
     <Compile Include="EditarCatalogo.aspx.designer.cs">
       <DependentUpon>EditarCatalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarMiPerfil.aspx.cs">
+      <DependentUpon>EditarMiPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarMiPerfil.aspx.designer.cs">
+      <DependentUpon>EditarMiPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
