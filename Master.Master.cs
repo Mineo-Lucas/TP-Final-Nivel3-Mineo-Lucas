@@ -11,7 +11,20 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page is Home || Page is Registrarse || Page is Loguearse)
+            {
+                Response.Redirect("Loguearse.aspx", false);
+            }
+        }
 
+        protected void BtnLoguearse_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Loguearse.aspx", false);
+        }
+
+        protected void BtnRegistrarse_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registrarse.aspx", false);
         }
     }
 }

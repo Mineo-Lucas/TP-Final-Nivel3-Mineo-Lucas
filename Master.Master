@@ -22,12 +22,11 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
                         <a class="nav-link" href="EditarCatalogo.aspx">Catalogo</a>
-                        <a class="nav-link" href="#">Pricing</a>
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="EditarMiPerfil.aspx">Mi Perfil</a>
                     </div>
                 </div>
-                <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" class="btn btn-outline-success me-2" />
-                <asp:Button ID="BtnRegistrarse" runat="server" Text="Registrarse" class="btn btn-sm btn-outline-secondary" />
+                <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" class="btn btn-outline-success me-2" OnClick="BtnLoguearse_Click" />
+                <asp:Button ID="BtnRegistrarse" runat="server" Text="Registrarse" class="btn btn-sm btn-outline-secondary" OnClick="BtnRegistrarse_Click"/>
             </div>
         </nav>
         <div class="container">

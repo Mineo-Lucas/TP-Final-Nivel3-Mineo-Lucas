@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using clases;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Metodos_y_Conexion
 {
@@ -34,6 +35,24 @@ namespace Metodos_y_Conexion
                 return true;
             }return false;
             
+        }
+        public void ModificarUsuario(User modificado)
+        {
+            ConexionDB conectar= new ConexionDB();
+            try
+            {
+                conectar.setearconsulta("update USERS set nombre = @Nombre, apellido = @Apellido, urlImagenPerfil = @Imagen where Id = @Id");
+                conectar.setearparametros("@Nombre", modificado.Nombre);
+                conectar.setearparametros("@Apellido", modificado.Apellido);
+                conectar.setearparametros("@Imagen", modificado.Imagen);
+                conectar.setearparametros("@Id", modificado.Id);
+                conectar.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

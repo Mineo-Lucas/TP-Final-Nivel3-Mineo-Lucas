@@ -19,7 +19,11 @@
         <asp:Image ID="ImgImagen" runat="server" />
     </div>
     <div>
-        <asp:Button ID="TxtGuardar" runat="server" Text="Guardar" />
+        <asp:Label ID="Label1" runat="server" Text="Id:"></asp:Label>
+        <asp:TextBox ID="TxtId" runat="server"></asp:TextBox>
+    </div>
+    <div>
+        <asp:Button ID="TxtGuardar" runat="server" Text="Guardar" Onclick="TxtGuardar_Click"/>
         <a href="Home.aspx">Cancelar</a>
     </div>
 </asp:Content>

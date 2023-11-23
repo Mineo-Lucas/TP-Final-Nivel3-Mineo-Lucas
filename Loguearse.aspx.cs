@@ -27,6 +27,8 @@ namespace CatalogoWeb
                 Session.Add("Logueado", logueado);
                 Response.Redirect("home.aspx", false);
             }
+
+
         }
     }
 }
