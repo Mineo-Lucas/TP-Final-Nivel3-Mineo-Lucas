@@ -19,15 +19,15 @@
     </div>
     <div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <%foreach (var articulo in ListaArticulos)
+            <%foreach (var Articulo in ListaArticulos)
                 {%>
             <div class="col">
                 <div class="card">
-                    <img src="<%:articulo.Imagen %>" class="card-img-top" alt="...">
+                    <img src="<%:Articulo.Imagen %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><%:articulo.Nombre %></h5>
-                        <p class="card-text"><%:articulo.Descripcion %></p>
-                        <asp:Button ID="BtnVerDetalles" runat="server" Text="Ver Detalles" />
+                        <h5 class="card-title"><%:Articulo.Nombre %></h5>
+                        <p class="card-text"><%:Articulo.Descripcion %></p>
+                        <a href="VerDetalles.aspx?Id=<%:Articulo.Id %>">Ver detalles</a>
                     </div>
                 </div>
             </div>

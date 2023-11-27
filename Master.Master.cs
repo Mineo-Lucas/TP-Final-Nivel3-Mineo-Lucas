@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Metodos_y_Conexion;
 
 namespace CatalogoWeb
 {
@@ -11,9 +12,13 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page is Home || Page is Registrarse || Page is Loguearse)
+            Seguridad seguridad = new Seguridad();
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles))
             {
-                Response.Redirect("Loguearse.aspx", false);
+                if (!(seguridad.SesionActiva(Session["Logueado"])))
+                {
+                    Response.Redirect("Loguearse.aspx", false);
+                }
             }
         }
 

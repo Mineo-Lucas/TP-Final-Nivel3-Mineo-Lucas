@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Metodos_y_Conexion
 {
-    internal class Seguridad
+    public class Seguridad
     {
-
+        public bool SesionActiva(object Logueado)
+        {
+            if (Logueado != null)
+            {
+                return true;
+            }
+            else return false;
+        }
     }
 }

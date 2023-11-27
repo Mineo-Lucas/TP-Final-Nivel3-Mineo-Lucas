@@ -170,21 +170,6 @@ namespace Metodos_y_Conexion
             finally { con.cerrarconexion(); }
 
         }
-        public void buscar(string buscado)
-        {
-            ConexionDB busqueda = new ConexionDB();
-            try
-            {
-                busqueda.setearconsulta("");
-                busqueda.setearparametros("@busq", buscado);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
         public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> articulosfiltrados = new List<Articulo>();
