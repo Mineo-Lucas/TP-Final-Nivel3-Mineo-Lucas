@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Metodos_y_Conexion
 {
     public class Seguridad
     {
-        public bool SesionActiva(object Logueado)
+        public bool SesionActiva(User Logueado)
         {
             if (Logueado != null)
             {

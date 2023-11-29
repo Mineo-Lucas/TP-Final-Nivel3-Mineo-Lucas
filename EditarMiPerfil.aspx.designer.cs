@@ -66,7 +66,7 @@ namespace CatalogoWeb
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtImagen;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile TxtImagen;
 
         /// <summary>
         /// Control ImgImagen.
@@ -96,12 +96,12 @@ namespace CatalogoWeb
         protected global::System.Web.UI.WebControls.TextBox TxtId;
 
         /// <summary>
-        /// Control TxtGuardar.
+        /// Control BtnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button TxtGuardar;
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
     }
 }

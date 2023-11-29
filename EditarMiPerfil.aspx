@@ -15,7 +15,7 @@
     </div>
     <div>
         <asp:Label ID="Label3" runat="server" Text="Imagen:"></asp:Label>
-        <asp:TextBox ID="TxtImagen" runat="server"></asp:TextBox>
+        <input type="file" id="TxtImagen" runat="server" class="form-control1" />
         <asp:Image ID="ImgImagen" runat="server" />
     </div>
     <div>
@@ -23,7 +23,7 @@
         <asp:TextBox ID="TxtId" runat="server"></asp:TextBox>
     </div>
     <div>
-        <asp:Button ID="TxtGuardar" runat="server" Text="Guardar" Onclick="TxtGuardar_Click"/>
+        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" Onclick="BtnGuardar_Click"/>
         <a href="Home.aspx">Cancelar</a>
     </div>
 </asp:Content>

@@ -27,6 +27,7 @@
                 </div>
                 <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" class="btn btn-outline-success me-2" OnClick="BtnLoguearse_Click" />
                 <asp:Button ID="BtnRegistrarse" runat="server" Text="Registrarse" class="btn btn-sm btn-outline-secondary" OnClick="BtnRegistrarse_Click"/>
+                <asp:Image ID="ImgAvatar" runat="server" style="height:40px; width:40px ; border-radius:50%" ImageUrl="https://cdn.playbuzz.com/cdn/913253cd-5a02-4bf2-83e1-18ff2cc7340f/c56157d5-5d8e-4826-89f9-361412275c35.jpg"/>
             </div>
         </nav>
         <div class="container">

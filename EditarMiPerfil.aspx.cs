@@ -20,7 +20,7 @@ namespace CatalogoWeb
                 {
                     TxtNombre.Text = logueado.Nombre;
                     TxtApellido.Text = logueado.Apellido;
-                    TxtImagen.Text = logueado.Imagen;
+                    
                 }
                 catch (Exception ex)
                 {
@@ -28,17 +28,22 @@ namespace CatalogoWeb
                 }  
             }
         }
-        protected void TxtGuardar_Click(object sender, EventArgs e)
+        protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             UserNegocio nego = new UserNegocio();
             User Modificado = new User();
             try
             {
+                string ruta = Server.MapPath("./imagen/");
+                User Logueado = (User)Session["Logueado"];
+                TxtImagen.PostedFile.SaveAs(ruta + "perfil-" + Logueado.Id+ ".jpg");
                 Modificado.Nombre = TxtNombre.Text;
                 Modificado.Apellido= TxtApellido.Text;
-                Modificado.Imagen = TxtImagen.Text;
+                Modificado.Imagen = "perfil-" + Logueado.Id + ".jpg";
                 Modificado.Id = int.Parse(TxtId.Text);
                 nego.ModificarUsuario(Modificado);
+                Image img= (Image)Master.FindControl("ImgAvatar");
+                img.ImageUrl= "~/imagen/" + Modificado.Imagen;
             }
             catch (Exception ex)
             {
