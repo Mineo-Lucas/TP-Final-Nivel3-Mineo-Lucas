@@ -15,13 +15,21 @@ namespace CatalogoWeb
         public void Page_Load(object sender, EventArgs e)
         {
             Metodos lista= new Metodos();
-            DgvEditarCatalogo.DataSource = lista.Listar();
-            DgvEditarCatalogo.DataBind();
-            if (!IsPostBack)
+            try
             {
-                DdlCampo.Items.Add("Nombre");
-                DdlCampo.Items.Add("Codigo");
-                DdlCampo.Items.Add("Precio");
+                DgvEditarCatalogo.DataSource = lista.Listar();
+                DgvEditarCatalogo.DataBind();
+                if (!IsPostBack)
+                {
+                    DdlCampo.Items.Add("Nombre");
+                    DdlCampo.Items.Add("Codigo");
+                    DdlCampo.Items.Add("Precio");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
 
@@ -56,8 +64,17 @@ namespace CatalogoWeb
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             Metodos BuscadoAvanzado = new Metodos();
-            DgvEditarCatalogo.DataSource = BuscadoAvanzado.filtrar(DdlCampo.Text, DdlCriterio.Text, TxtFiltroAvanzado.Text);
-            DgvEditarCatalogo.DataBind();
+            try
+            {
+                DgvEditarCatalogo.DataSource = BuscadoAvanzado.filtrar(DdlCampo.Text, DdlCriterio.Text, TxtFiltroAvanzado.Text);
+                DgvEditarCatalogo.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx",false);
+            }
+            
         }
     }
 }

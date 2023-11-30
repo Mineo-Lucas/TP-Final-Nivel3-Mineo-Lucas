@@ -15,7 +15,7 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles))
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error))
             {
                 if (!(seguridad.SesionActiva((User)Session["Logueado"])))
                 {

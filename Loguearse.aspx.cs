@@ -20,13 +20,22 @@ namespace CatalogoWeb
         {
             UserNegocio conectar= new UserNegocio();
             User logueado = new User();
-            logueado.Email = TxtEmail.Text;
-            logueado.Contraseña= TxtContraseña.Text;
-            if (conectar.Loguearse(logueado))
+            try
             {
-                Session.Add("Logueado", logueado);
-                Response.Redirect("home.aspx", false);
+                logueado.Email = TxtEmail.Text;
+                logueado.Contraseña = TxtContraseña.Text;
+                if (conectar.Loguearse(logueado))
+                {
+                    Session.Add("Logueado", logueado);
+                    Response.Redirect("Home.aspx", false);
+                }
             }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
+                
         }
     }
 }

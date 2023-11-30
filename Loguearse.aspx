@@ -9,11 +9,11 @@
 </div>
     <div>
         <asp:Label ID="Label1" runat="server" Text="Email:"></asp:Label>
-        <asp:TextBox ID="TxtEmail" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtEmail" runat="server" TextMode="Email"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label2" runat="server" Text="Contraseña:"></asp:Label>
-        <asp:TextBox ID="TxtContraseña" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtContraseña" runat="server" TextMode="Password"></asp:TextBox>
     </div>
     <div>
         <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" onclick="BtnLoguearse_Click"/>

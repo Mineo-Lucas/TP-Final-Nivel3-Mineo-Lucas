@@ -13,32 +13,57 @@ namespace Metodos_y_Conexion
     {
         public void Registrarse(User Nuevo)
         {
-            ConexionDB coneccion= new ConexionDB();
-            coneccion.setearconsulta("insert into USERS(email, pass) values(@Email, @Contraseña)");
-            coneccion.setearparametros("@Email", Nuevo.Email);
-            coneccion.setearparametros("@Contraseña", Nuevo.Contraseña);
+            ConexionDB coneccion = new ConexionDB();
+            try
+            {
+                coneccion.setearconsulta("insert into USERS(email, pass) values(@Email, @Contraseña)");
+                coneccion.setearparametros("@Email", Nuevo.Email);
+                coneccion.setearparametros("@Contraseña", Nuevo.Contraseña);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                coneccion.cerrarconexion();
+            }
         }
         public bool Loguearse(User logueado)
         {
             ConexionDB conec = new ConexionDB();
-            conec.setearconsulta("select Id,email,pass,nombre,apellido,urlImagenPerfil,administrador from USERS where email= @Email and pass=@Contraseña");
-            conec.setearparametros("@Email", logueado.Email);
-            conec.setearparametros("@Contraseña", logueado.Contraseña);
-            conec.ejecutarlectura();
-            while (conec.Lector.Read())
+            try
             {
-                logueado.Nombre = conec.Lector["nombre"].ToString();
-                logueado.Apellido = conec.Lector["apellido"].ToString();
-                logueado.Imagen = conec.Lector["urlImagenPerfil"].ToString();
-                logueado.Admin = (bool)conec.Lector["administrador"];
-                logueado.Id = int.Parse(conec.Lector["Id"].ToString());
-                return true;
-            }return false;
-            
+                conec.setearconsulta("select Id,email,pass,nombre,apellido,urlImagenPerfil,administrador from USERS where email= @Email and pass=@Contraseña");
+                conec.setearparametros("@Email", logueado.Email);
+                conec.setearparametros("@Contraseña", logueado.Contraseña);
+                conec.ejecutarlectura();
+                while (conec.Lector.Read())
+                {
+                    logueado.Nombre = conec.Lector["nombre"].ToString();
+                    logueado.Apellido = conec.Lector["apellido"].ToString();
+                    logueado.Imagen = conec.Lector["urlImagenPerfil"].ToString();
+                    logueado.Admin = (bool)conec.Lector["administrador"];
+                    logueado.Id = int.Parse(conec.Lector["Id"].ToString());
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conec.cerrarconexion();
+            }
+
         }
         public void ModificarUsuario(User modificado)
         {
-            ConexionDB conectar= new ConexionDB();
+            ConexionDB conectar = new ConexionDB();
             try
             {
                 conectar.setearconsulta("update USERS set nombre = @Nombre, apellido = @Apellido, urlImagenPerfil = @Imagen where Id = @Id");
@@ -52,6 +77,10 @@ namespace Metodos_y_Conexion
             {
 
                 throw ex;
+            }
+            finally
+            {
+                conectar.cerrarconexion();
             }
         }
     }

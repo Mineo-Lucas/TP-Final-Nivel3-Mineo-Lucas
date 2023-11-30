@@ -20,11 +20,18 @@ namespace CatalogoWeb
         {
             UserNegocio negocio = new UserNegocio();
             User nuevo = new User();
-
-            nuevo.Email = TxtEmail.Text;
-            nuevo.Contraseña=TxtContraseña.Text;
-            negocio.Registrarse(nuevo);
-            Response.Redirect("Loguearse.aspx", false);
+            try
+            {
+                nuevo.Email = TxtEmail.Text;
+                nuevo.Contraseña = TxtContraseña.Text;
+                negocio.Registrarse(nuevo);
+                Response.Redirect("Loguearse.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

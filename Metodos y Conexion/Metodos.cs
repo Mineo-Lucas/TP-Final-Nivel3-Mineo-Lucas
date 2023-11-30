@@ -250,6 +250,10 @@ namespace Metodos_y_Conexion
             {
 
                 throw ex;
+            }
+            finally
+            {
+                conec.cerrarconexion();
             } 
             
         }

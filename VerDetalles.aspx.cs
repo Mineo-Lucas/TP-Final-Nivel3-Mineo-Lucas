@@ -16,14 +16,24 @@ namespace CatalogoWeb
             Metodos metodos = new Metodos();
             if (!IsPostBack)
             {
-                string Id = Request.QueryString["id"].ToString();
-                Articulo Seleccionado = (metodos.BuscarArticuloPorId(Id))[0];
-                LblDescripcion.Text = Seleccionado.Descripcion;
-                LblCodigo.Text=Seleccionado.Codigo;
-                LblPrecio.Text = Seleccionado.Precio.ToString();
-                LblMarca.Text=Seleccionado.Marca.ToString();
-                LblCategoria.Text = Seleccionado.categoria.ToString();
+                try
+                {
+                    string Id = Request.QueryString["id"].ToString();
+                    Articulo Seleccionado = (metodos.BuscarArticuloPorId(Id))[0];
+                    LblDescripcion.Text = Seleccionado.Descripcion;
+                    LblCodigo.Text = Seleccionado.Codigo;
+                    LblPrecio.Text = Seleccionado.Precio.ToString();
+                    LblMarca.Text = Seleccionado.Marca.ToString();
+                    LblCategoria.Text = Seleccionado.categoria.ToString();
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
             }
+                
         }
     }
 }

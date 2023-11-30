@@ -47,7 +47,6 @@ namespace CatalogoWeb
                     }
                     catch (Exception ex)
                     {
-
                         throw ex;
                     }
                     BtnAceptar.Text = "Modificar";
@@ -84,8 +83,8 @@ namespace CatalogoWeb
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -101,7 +100,8 @@ namespace CatalogoWeb
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
                
             
