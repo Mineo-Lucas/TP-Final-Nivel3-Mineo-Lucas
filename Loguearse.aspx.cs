@@ -18,7 +18,7 @@ namespace CatalogoWeb
 
         protected void BtnLoguearse_Click(object sender, EventArgs e)
         {
-            UserNegocio conectar= new UserNegocio();
+            UserNegocio conectar = new UserNegocio();
             User logueado = new User();
             try
             {
@@ -35,7 +35,7 @@ namespace CatalogoWeb
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
-                
+
         }
     }
 }

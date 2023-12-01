@@ -10,5 +10,8 @@
     <div>
         <asp:Label ID="LblError" runat="server" Text="Label"></asp:Label>
     </div>
+    <div>
+        <a href="Home.aspx">Volver al home</a>
+    </div>
 
 </asp:Content>

@@ -14,7 +14,13 @@ namespace CatalogoWeb
     {
         public void Page_Load(object sender, EventArgs e)
         {
-            Metodos lista= new Metodos();
+            Seguridad seguridad = new Seguridad();
+            Metodos lista = new Metodos();
+            if (!seguridad.Admin((User)Session["Logueado"]))
+                {
+                Session.Add("Error", "Necesitas admin para poder entrar");
+                Response.Redirect("Error.aspx");
+            }
             try
             {
                 DgvEditarCatalogo.DataSource = lista.Listar();
@@ -53,7 +59,7 @@ namespace CatalogoWeb
                 DdlCriterio.Items.Add("Menor a");
                 DdlCriterio.Items.Add("Igual a");
             }
-            else 
+            else
             {
                 DdlCriterio.Items.Add("Empieza con");
                 DdlCriterio.Items.Add("Termina con");
@@ -72,9 +78,9 @@ namespace CatalogoWeb
             catch (Exception ex)
             {
                 Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx",false);
+                Response.Redirect("Error.aspx", false);
             }
-            
+
         }
     }
 }

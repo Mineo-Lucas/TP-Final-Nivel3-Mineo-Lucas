@@ -15,17 +15,24 @@ namespace CatalogoWeb
         {
             if (!IsPostBack)
             {
-                User logueado= (User)Session["Logueado"];
+                User logueado = (User)Session["Logueado"];
                 try
                 {
-                    TxtNombre.Text = logueado.Nombre;
-                    TxtApellido.Text = logueado.Apellido;
-                    
+                    if (logueado.Nombre != null)
+                    {
+                        TxtNombre.Text = logueado.Nombre;
+                    }
+                    if (logueado.Apellido != null)
+                    {
+                        TxtApellido.Text = logueado.Apellido;
+                    }
+                    TxtId.Enabled = false;
+                    TxtId.Visible = false;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
-                }  
+                }
             }
         }
         protected void BtnGuardar_Click(object sender, EventArgs e)
@@ -36,14 +43,14 @@ namespace CatalogoWeb
             {
                 string ruta = Server.MapPath("./imagen/");
                 User Logueado = (User)Session["Logueado"];
-                TxtImagen.PostedFile.SaveAs(ruta + "perfil-" + Logueado.Id+ ".jpg");
+                TxtImagen.PostedFile.SaveAs(ruta + "perfil-" + Logueado.Id + ".jpg");
                 Modificado.Nombre = TxtNombre.Text;
-                Modificado.Apellido= TxtApellido.Text;
+                Modificado.Apellido = TxtApellido.Text;
                 Modificado.Imagen = "perfil-" + Logueado.Id + ".jpg";
                 Modificado.Id = int.Parse(TxtId.Text);
                 nego.ModificarUsuario(Modificado);
-                Image img= (Image)Master.FindControl("ImgAvatar");
-                img.ImageUrl= "~/imagen/" + Modificado.Imagen;
+                Image img = (Image)Master.FindControl("ImgAvatar");
+                img.ImageUrl = "~/imagen/" + Modificado.Imagen;
             }
             catch (Exception ex)
             {

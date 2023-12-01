@@ -24,8 +24,17 @@ namespace CatalogoWeb
             {
                 nuevo.Email = TxtEmail.Text;
                 nuevo.Contraseña = TxtContraseña.Text;
-                negocio.Registrarse(nuevo);
-                Response.Redirect("Loguearse.aspx", false);
+                if (negocio.email(nuevo.Email))
+                {
+                    negocio.Registrarse(nuevo);
+                    Response.Redirect("Loguearse.aspx", false);
+                }
+                else
+                {
+                    Session.Add("Error", "Este email ya esta registrado");
+                    Response.Redirect("Error.aspx",false);
+                }
+
             }
             catch (Exception ex)
             {

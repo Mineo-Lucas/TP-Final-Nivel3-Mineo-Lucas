@@ -17,5 +17,19 @@ namespace Metodos_y_Conexion
             }
             else return false;
         }
+        public bool Admin(User Logueado)
+        {
+            if(Logueado.Admin)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool EmailVacio()
+        {
+            
+            return false;
+        }
     }
+    
 }

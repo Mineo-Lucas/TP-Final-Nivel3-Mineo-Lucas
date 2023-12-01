@@ -22,12 +22,16 @@ namespace CatalogoWeb
                     Response.Redirect("Loguearse.aspx", false);
                 }
             }
+            BtnSalir.Enabled = false;
+            BtnSalir.Visible = false;
             if (seguridad.SesionActiva((User)Session["Logueado"]))
             {
                 BtnLoguearse.Enabled = false;
                 BtnLoguearse.Visible = false;
                 BtnRegistrarse.Enabled = false;
                 BtnRegistrarse.Visible = false;
+                BtnSalir.Enabled = true;
+                BtnSalir.Visible = true;
                 User Logueado = (User)Session["Logueado"];
                 if (Logueado.Imagen != null)
                 {
@@ -57,5 +61,10 @@ namespace CatalogoWeb
             Response.Redirect("Registrarse.aspx", false);
         }
 
+        protected void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Home.aspx", false);
+        }
     }
 }
