@@ -1,11 +1,11 @@
-﻿using System;
+﻿using clases;
+using Metodos_y_Conexion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using clases;
-using Metodos_y_Conexion;
 
 namespace CatalogoWeb
 {

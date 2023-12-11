@@ -15,7 +15,7 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error))
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is ListadoDeUsuarios))
             {
                 if (!(seguridad.SesionActiva((User)Session["Logueado"])))
                 {
@@ -24,6 +24,7 @@ namespace CatalogoWeb
             }
             BtnSalir.Enabled = false;
             BtnSalir.Visible = false;
+            BtnEditarCatalogo.Visible = false;
             if (seguridad.SesionActiva((User)Session["Logueado"]))
             {
                 BtnLoguearse.Enabled = false;
@@ -32,8 +33,9 @@ namespace CatalogoWeb
                 BtnRegistrarse.Visible = false;
                 BtnSalir.Enabled = true;
                 BtnSalir.Visible = true;
+
                 User Logueado = (User)Session["Logueado"];
-                if (Logueado.Imagen != null)
+                if (Logueado.Imagen != "")
                 {
                     ImgAvatar.Visible = true;
                     ImgAvatar.ImageUrl = "~/imagen/" + Logueado.Imagen;
@@ -43,12 +45,15 @@ namespace CatalogoWeb
                     ImgAvatar.Visible = true;
                     ImgAvatar.ImageUrl = "https://cdn.playbuzz.com/cdn/913253cd-5a02-4bf2-83e1-18ff2cc7340f/c56157d5-5d8e-4826-89f9-361412275c35.jpg";
                 }
+                if (seguridad.Admin((User)Session["Logueado"]))
+                {
+                    BtnEditarCatalogo.Visible = true;
+                }
             }
             else
             {
                 ImgAvatar.Visible = false;
             }
-            
         }
 
         protected void BtnLoguearse_Click(object sender, EventArgs e)
