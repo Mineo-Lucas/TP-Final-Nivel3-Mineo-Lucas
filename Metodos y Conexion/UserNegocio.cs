@@ -24,17 +24,17 @@ namespace Metodos_y_Conexion
                 while (conec.Lector.Read())
                 {
                     User usuario = new User();
-                    if (usuario.Nombre != null)
+                    if (conec.Lector["nombre"].ToString() != "")
                     {
                         usuario.Nombre = (string)conec.Lector["nombre"];
                     }
-                    if (usuario.Apellido != null)
+                    if (conec.Lector["apellido"].ToString() != "")
                     {
                         usuario.Apellido = (string)conec.Lector["apellido"];
                     }
                     usuario.Email = (string)conec.Lector["email"];
                     usuario.Id = int.Parse(conec.Lector["Id"].ToString());
-                    if (usuario.Imagen != null)
+                    if (conec.Lector["urlImagenPerfil"].ToString() != "")
                     {
                         usuario.Imagen = (string)conec.Lector["urlImagenPerfil"];
                     }
@@ -142,7 +142,50 @@ namespace Metodos_y_Conexion
                 con.cerrarconexion();
             }
         }
+        public List<User> BuscarUsuarioPorId(string Id)
+        {
+            List<User> lista = new List<User>();
+            ConexionDB conexion = new ConexionDB();
 
+            try
+            {
+                conexion.setearconsulta("select Id,email, pass, nombre, apellido, urlImagenPerfil, administrador from USERS where Id=@Id");
+                conexion.setearparametros("@Id", Id);
+                conexion.ejecutarlectura();
+
+                while (conexion.Lector.Read())
+                {
+                    User Userbusc = new User();
+                    Userbusc.Email = (string)conexion.Lector["email"];
+                    Userbusc.Contraseña = (string)conexion.Lector["pass"];
+                    if (conexion.Lector["urlImagenPerfil"].ToString() != "")
+                    {
+                        Userbusc.Imagen = (string)conexion.Lector["urlImagenPerfil"];
+                    }
+                    if (conexion.Lector["nombre"].ToString() != "")
+                    {
+                        Userbusc.Nombre = (string)conexion.Lector["nombre"];
+                    }
+                    if (conexion.Lector["apellido"].ToString() != "")
+                    {
+                        Userbusc.Apellido = (string)conexion.Lector["apellido"];
+                    }
+                    Userbusc.Id = (int)conexion.Lector["Id"];
+                    Userbusc.Admin = (bool)conexion.Lector["Administrador"];
+                    lista.Add(Userbusc);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.cerrarconexion();
+            }
+
+        }
         public void Registrarse(User Nuevo)
         {
             ConexionDB coneccion = new ConexionDB();
@@ -214,6 +257,48 @@ namespace Metodos_y_Conexion
             {
                 conectar.cerrarconexion();
             }
+        }
+        public void ModificacionTotalUsuario(User modificado)
+        {
+            ConexionDB conectar = new ConexionDB();
+            try
+            {
+                conectar.setearconsulta("update USERS set email=@email, pass=@pass, nombre = @Nombre, apellido = @Apellido, urlImagenPerfil = @Imagen, administrador=@admin where Id = @Id");
+                conectar.setearparametros("@email", modificado.Email);
+                conectar.setearparametros("@pass", modificado.Contraseña);
+                conectar.setearparametros("@Nombre", modificado.Nombre);
+                conectar.setearparametros("@Apellido", modificado.Apellido);
+                conectar.setearparametros("@Imagen", modificado.Imagen);
+                conectar.setearparametros("@admin", modificado.Admin);
+                conectar.setearparametros("@Id", modificado.Id);
+                conectar.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conectar.cerrarconexion();
+            }
+        }
+        public void eliminarUsuario(string eliminado)
+        {
+            ConexionDB con = new ConexionDB();
+            try
+            {
+                con.setearconsulta("delete USERS where Id = @Id");
+                con.setearparametros("@Id", eliminado);
+                con.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { con.cerrarconexion(); }
+
         }
         public bool email(string email)
         {

@@ -15,22 +15,26 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is ListadoDeUsuarios))
+            BtnSalir.Enabled = false;
+            BtnSalir.Visible = false;
+            BtnEditarCatalogo.Visible = false;
+            BtnListadoDeUsuarios.Visible = false;
+            ImgAvatar.Visible = false;
+            BtnMiPerfil.Visible = false;
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error))
             {
-                if (!(seguridad.SesionActiva((User)Session["Logueado"])))
+                if (!seguridad.SesionActiva((User)Session["Logueado"]))
                 {
                     Response.Redirect("Loguearse.aspx", false);
                 }
             }
-            BtnSalir.Enabled = false;
-            BtnSalir.Visible = false;
-            BtnEditarCatalogo.Visible = false;
             if (seguridad.SesionActiva((User)Session["Logueado"]))
             {
                 BtnLoguearse.Enabled = false;
                 BtnLoguearse.Visible = false;
                 BtnRegistrarse.Enabled = false;
                 BtnRegistrarse.Visible = false;
+                BtnMiPerfil.Visible = true;
                 BtnSalir.Enabled = true;
                 BtnSalir.Visible = true;
 
@@ -48,14 +52,10 @@ namespace CatalogoWeb
                 if (seguridad.Admin((User)Session["Logueado"]))
                 {
                     BtnEditarCatalogo.Visible = true;
+                    BtnListadoDeUsuarios.Visible = true;
                 }
             }
-            else
-            {
-                ImgAvatar.Visible = false;
-            }
         }
-
         protected void BtnLoguearse_Click(object sender, EventArgs e)
         {
             Response.Redirect("Loguearse.aspx", false);

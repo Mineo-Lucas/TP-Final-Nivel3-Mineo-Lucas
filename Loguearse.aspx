@@ -9,14 +9,14 @@
 </div>
     <div>
         <asp:Label ID="Label1" runat="server" Text="Email:"></asp:Label>
-        <asp:TextBox ID="TxtEmail" runat="server" TextMode="Email"></asp:TextBox>
+        <asp:TextBox ID="TxtEmail" runat="server" TextMode="Email" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label2" runat="server" Text="Contraseña:"></asp:Label>
-        <asp:TextBox ID="TxtContraseña" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="TxtContraseña" runat="server" TextMode="Password" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
-        <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" onclick="BtnLoguearse_Click"/>
+        <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" CssClass="btn btn-primary" onclick="BtnLoguearse_Click"/>
         <a href="Home.aspx">Cancelar</a>
     </div>
 </asp:Content>

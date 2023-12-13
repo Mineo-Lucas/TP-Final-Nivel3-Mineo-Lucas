@@ -21,8 +21,9 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
+                        <a class="nav-link" href="EditarMiPerfil.aspx" id="BtnMiPerfil" runat="server">Mi Perfil</a>
                         <a class="nav-link" href="EditarCatalogo.aspx" id="BtnEditarCatalogo" runat="server">EditarCatalogo</a>
-                        <a class="nav-link" href="EditarMiPerfil.aspx">Mi Perfil</a>
+                        <a class="nav-link" href="ListadoDeUsuarios.aspx" id="BtnListadoDeUsuarios" runat="server">EditarUsuarios</a>
                     </div>
                 </div>
                 <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" class="btn btn-outline-success me-2" OnClick="BtnLoguearse_Click" />

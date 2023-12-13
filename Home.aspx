@@ -14,7 +14,7 @@
         <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
         <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
         <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
-        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click"
             />
     </div>
     <div>

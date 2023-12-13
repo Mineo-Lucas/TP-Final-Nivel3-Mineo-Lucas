@@ -26,6 +26,7 @@ namespace CatalogoWeb
                     {
                         TxtApellido.Text = logueado.Apellido;
                     }
+                    TxtId.Text = logueado.Id.ToString();
                     TxtId.Enabled = false;
                     TxtId.Visible = false;
                 }
@@ -51,6 +52,7 @@ namespace CatalogoWeb
                 nego.ModificarUsuario(Modificado);
                 Image img = (Image)Master.FindControl("ImgAvatar");
                 img.ImageUrl = "~/imagen/" + Modificado.Imagen;
+                Session.Add("Logueado", Modificado);
             }
             catch (Exception ex)
             {

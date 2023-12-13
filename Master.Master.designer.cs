@@ -33,6 +33,15 @@ namespace CatalogoWeb
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control BtnMiPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnMiPerfil;
+
+        /// <summary>
         /// Control BtnEditarCatalogo.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace CatalogoWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnEditarCatalogo;
+
+        /// <summary>
+        /// Control BtnListadoDeUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnListadoDeUsuarios;
 
         /// <summary>
         /// Control BtnLoguearse.

@@ -13,27 +13,28 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           Seguridad segu= new Seguridad();
+            Seguridad segu = new Seguridad();
             //if (!segu.Admin((User)Session["Logueado"]))
             //{
-                //Session.Add("Error", "Necesitas admin para poder entrar");
-                //Response.Redirect("Error.aspx");
+            // Session.Add("Error", "Necesitas admin para poder entrar");
+            // Response.Redirect("Error.aspx");
             //}
             try
             {
+                UserNegocio nego = new UserNegocio();
+                GdvPerfiles.DataSource = nego.ListarUsuarios();
+                GdvPerfiles.DataBind();
                 if (!IsPostBack)
                 {
-                    UserNegocio nego = new UserNegocio();
-                    GdvPerfiles.DataSource = nego.ListarUsuarios();
-                    GdvPerfiles.DataBind();
                     DdpCampo.Items.Add("Email");
                     DdpCampo.Items.Add("Id");
                     DdpCampo.Items.Add("Nombre");
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                Response.Redirect("Error.aspx",false);
+                Response.Redirect("Error.aspx", false);
             }
         }
         protected void DdpCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +64,19 @@ namespace CatalogoWeb
             catch (Exception ex)
             {
                 Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+        protected void GdvPerfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string Id = GdvPerfiles.SelectedDataKey.Value.ToString();
+                Response.Redirect("EditarUsers.aspx?Id=" + Id, false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
                 Response.Redirect("Error.aspx", false);
             }
         }

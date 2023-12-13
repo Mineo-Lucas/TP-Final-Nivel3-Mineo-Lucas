@@ -14,11 +14,11 @@
         <asp:DropDownList ID="DdpCriterio" runat="server"></asp:DropDownList>
         <asp:Label ID="Label3" runat="server" Text="Filtro"></asp:Label>
         <asp:TextBox ID="TxtFiltro" runat="server"></asp:TextBox>
-        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" onclick="BtnBuscar_Click"/>
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" onclick="BtnBuscar_Click"/>
     </div>
     <div>
         <asp:GridView ID="GdvPerfiles" runat="server" AutoGenerateColumns="false" DataKeyNames="Id" CssClass="table table-dark border-danger"
-            >
+            OnSelectedIndexChanged="GdvPerfiles_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField HeaderText="Id" DataField="Id" /> 
                 <asp:BoundField HeaderText="Email" DataField="Email" />
@@ -27,7 +27,7 @@
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" /> 
                 <asp:BoundField HeaderText="Imagen" DataField="Imagen" /> 
                 <asp:BoundField HeaderText="Admin" DataField="Admin" />
-                <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Selecccionar"/>
+                <asp:CommandField HeaderText="Modificar/Eliminar" ShowSelectButton="true" SelectText="Selecccionar"/>
             </Columns>
         </asp:GridView>
     </div>

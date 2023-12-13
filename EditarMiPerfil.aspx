@@ -7,23 +7,22 @@
     </div>
     <div>
         <asp:Label ID="Nombre" runat="server" Text="Nombre:"></asp:Label>
-        <asp:TextBox ID="TxtNombre" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtNombre" runat="server" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label2" runat="server" Text="Apellido:"></asp:Label>
-        <asp:TextBox ID="TxtApellido" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtApellido" runat="server" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
         <asp:Label ID="Label3" runat="server" Text="Imagen:"></asp:Label>
         <input type="file" id="TxtImagen" runat="server" class="form-control1" />
-        <asp:Image ID="ImgImagen" runat="server" />
+        <asp:Image ID="ImgImagen" runat="server"/>
     </div>
     <div>
-        <asp:Label ID="Label1" runat="server" Text="Id:"></asp:Label>
-        <asp:TextBox ID="TxtId" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtId" runat="server" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
-        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" Onclick="BtnGuardar_Click"/>
+        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" Onclick="BtnGuardar_Click"/>
         <a href="Home.aspx">Cancelar</a>
     </div>
 </asp:Content>
