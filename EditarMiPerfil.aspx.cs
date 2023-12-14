@@ -39,20 +39,18 @@ namespace CatalogoWeb
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             UserNegocio nego = new UserNegocio();
-            User Modificado = new User();
             try
             {
                 string ruta = Server.MapPath("./imagen/");
                 User Logueado = (User)Session["Logueado"];
                 TxtImagen.PostedFile.SaveAs(ruta + "perfil-" + Logueado.Id + ".jpg");
-                Modificado.Nombre = TxtNombre.Text;
-                Modificado.Apellido = TxtApellido.Text;
-                Modificado.Imagen = "perfil-" + Logueado.Id + ".jpg";
-                Modificado.Id = int.Parse(TxtId.Text);
-                nego.ModificarUsuario(Modificado);
+                Logueado.Nombre = TxtNombre.Text;
+                Logueado.Apellido = TxtApellido.Text;
+                Logueado.Imagen = "perfil-" + Logueado.Id + ".jpg";
+                Logueado.Id = int.Parse(TxtId.Text);
+                nego.ModificarUsuario(Logueado);
                 Image img = (Image)Master.FindControl("ImgAvatar");
-                img.ImageUrl = "~/imagen/" + Modificado.Imagen;
-                Session.Add("Logueado", Modificado);
+                img.ImageUrl = "~/imagen/" + Logueado.Imagen;
             }
             catch (Exception ex)
             {
