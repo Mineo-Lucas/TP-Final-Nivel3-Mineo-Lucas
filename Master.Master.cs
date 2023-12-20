@@ -21,7 +21,7 @@ namespace CatalogoWeb
             BtnListadoDeUsuarios.Visible = false;
             ImgAvatar.Visible = false;
             BtnMiPerfil.Visible = false;
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error))
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is MisFavoritos))
             {
                 if (!seguridad.SesionActiva((User)Session["Logueado"]))
                 {

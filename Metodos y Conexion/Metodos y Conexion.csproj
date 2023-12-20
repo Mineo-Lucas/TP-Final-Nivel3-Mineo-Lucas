@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CategoriaMetodo.cs" />
     <Compile Include="ConexionDB.cs" />
+    <Compile Include="FavoritosNegocio.cs" />
     <Compile Include="MarcasMetodo.cs" />
     <Compile Include="Metodos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

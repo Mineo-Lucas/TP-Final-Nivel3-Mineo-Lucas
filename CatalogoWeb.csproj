@@ -74,6 +74,7 @@
     <Content Include="Home.aspx" />
     <Content Include="ListadoDeUsuarios.aspx" />
     <Content Include="Loguearse.aspx" />
+    <Content Include="MisFavoritos.aspx" />
     <Content Include="Modificar-AgregarArticulo.aspx" />
     <Content Include="Registrarse.aspx" />
     <Content Include="VerDetalles.aspx" />
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MisFavoritos.aspx.cs">
+      <DependentUpon>MisFavoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisFavoritos.aspx.designer.cs">
+      <DependentUpon>MisFavoritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modificar-AgregarArticulo.aspx.cs">
       <DependentUpon>Modificar-AgregarArticulo.aspx</DependentUpon>
