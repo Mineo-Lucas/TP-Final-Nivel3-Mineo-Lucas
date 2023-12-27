@@ -27,6 +27,7 @@
         <asp:Label ID="LblCategoria" runat="server" Text=""></asp:Label>
     </div>
     <div>
+        <asp:Button ID="BtnAgregarFavorito" runat="server" Text="Agregar a favoritos" CssClass="btn btn-warning" OnClick="BtnAgregarFavorito_Click"/>
         <a href="Home.aspx">Volver</a>
     </div>
 </asp:Content>

@@ -24,6 +24,7 @@
                         <a class="nav-link" href="EditarMiPerfil.aspx" id="BtnMiPerfil" runat="server">Mi Perfil</a>
                         <a class="nav-link" href="EditarCatalogo.aspx" id="BtnEditarCatalogo" runat="server">EditarCatalogo</a>
                         <a class="nav-link" href="ListadoDeUsuarios.aspx" id="BtnListadoDeUsuarios" runat="server">EditarUsuarios</a>
+                        <a class="nav-link" href="MisFavoritos.aspx" id="A1" runat="server">Mis Favoritos</a>
                     </div>
                 </div>
                 <asp:Button ID="BtnLoguearse" runat="server" Text="Loguearse" class="btn btn-outline-success me-2" OnClick="BtnLoguearse_Click" />

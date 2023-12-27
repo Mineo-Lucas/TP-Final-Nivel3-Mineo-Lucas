@@ -22,7 +22,6 @@ namespace CatalogoWeb
                 DdlCampo.Items.Add("Codigo");
                 DdlCampo.Items.Add("Precio");
             }
-
         }
 
         protected void DdlCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,25 +47,6 @@ namespace CatalogoWeb
                 Metodos BuscadoAvanzado = new Metodos();
                 ListaArticulos = BuscadoAvanzado.filtrar(DdlCampo.Text, DdlCriterio.Text, TxtFiltroAvanzado.Text);
             }
-        }
-
-        protected void BtnFavoritos_Click(object sender, EventArgs e)
-        {
-            FavoritosNegocio nego =new FavoritosNegocio();
-            Favorito favo = new Favorito();
-            try
-            {
-                User usuario = (User)Session["Logueado"];
-                favo.IdUsuario = usuario.Id;
-                //favo.IdArticulo = int.Parse(.Text);
-                nego.AgregarArticuloFavoritos(favo);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-          
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using clases;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +10,37 @@ namespace Metodos_y_Conexion
 {
     public class FavoritosNegocio
     {
-        public List<Articulo> ListarFavoritos()
+        public List<Articulo> ListarFavoritos(int id)
         {
-            List<Articulo> catego = new List<Articulo>();
+            List<Articulo> articulos = new List<Articulo>();
             ConexionDB conec = new ConexionDB();
             try
             {
-                conec.setearconsulta("select Id,Descripcion from CATEGORIAS");
+                conec.setearconsulta("select Codigo,a.Nombre,a.Descripcion,c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca, f.IdArticulo, a.Id, f.IdUser, u.Id from ARTICULOS a, CATEGORIAS c, MARCAS m, FAVORITOS f, USERS u where u.Id=@Id and u.Id=f.IdUser and f.IdArticulo=a.Id and c.Id=IdCategoria and m.Id=IdMarca");
+                conec.setearparametros("@Id", id);
                 conec.ejecutarlectura();
-
-
                 while (conec.Lector.Read())
                 {
-                    Categoria cate = new Categoria();
-                    cate.Id = (int)conec.Lector["Id"];
-                    cate.categoria = (string)conec.Lector["Descripcion"];
-                    //catego.Add(cate);
+                    Articulo arti = new Articulo();
+                    arti.Codigo = (string)conec.Lector["Codigo"];
+                    arti.Nombre = (string)conec.Lector["Nombre"];
+                    if (conec.Lector != null)
+                    {
+                        arti.Imagen = (string)conec.Lector["ImagenUrl"];
+                    }
+                    arti.Descripcion = (string)conec.Lector["Descripcion"];
+                    arti.Precio = (decimal)conec.Lector["Precio"];
+                    arti.Marca = new Marcas();
+                    arti.Marca.marca = (string)conec.Lector["Marca"];
+                    arti.Marca.id = (int)conec.Lector["IdMarca"];
+                    arti.categoria = new Categoria();
+                    arti.categoria.categoria = (string)conec.Lector["categoria"];
+                    arti.categoria.Id = (int)conec.Lector["IdCategoria"];
+                    arti.Id = (int)conec.Lector["Id"];
+                    articulos.Add(arti);
                 }
-                return catego;
+
+                return articulos;
             }
             catch (Exception ex)
             {
@@ -59,5 +73,6 @@ namespace Metodos_y_Conexion
                 conex.cerrarconexion();
             }
         }
+
     }
 }

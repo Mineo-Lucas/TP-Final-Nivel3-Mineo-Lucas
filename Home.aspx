@@ -27,9 +27,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%:Articulo.Nombre %></h5>
                         <p class="card-text"><%:Articulo.Descripcion %></p>
-                        <a href="VerDetalles.aspx?Id=<%:Articulo.Id %>">Ver detalles</a>
-                        <h5 class="card-tittle" id="H5Id" visible="false" ><%:Articulo.Id%></h5>
-                        <asp:Button ID="BtnFavoritos" runat="server" Text="Agregar a favoritos" OnClick="BtnFavoritos_Click" />
+                        <a href="VerDetalles.aspx?Id=<%:Articulo.Id %>">Ver detalles/Agregar a favoritos</a>
                     </div>
                 </div>
             </div>
