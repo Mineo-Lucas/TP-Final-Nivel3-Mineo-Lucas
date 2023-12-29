@@ -20,7 +20,8 @@ namespace Metodos_y_Conexion
 
             try
             {
-                conexion.setearconsulta("select Codigo,Nombre,a.Descripcion,c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca,a.Id from ARTICULOS a, CATEGORIAS c, MARCAS m where c.Id=IdCategoria and m.Id=IdMarca");
+                conexion.setearconsulta("select Codigo,Nombre,a.Descripcion" +
+                    ",c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca,a.Id from ARTICULOS a, CATEGORIAS c, MARCAS m where c.Id=IdCategoria and m.Id=IdMarca");
                 conexion.ejecutarlectura();
 
                 while (conexion.Lector.Read())

@@ -194,6 +194,7 @@ namespace Metodos_y_Conexion
                 coneccion.setearconsulta("insert into USERS(email, pass) values(@Email, @Contraseña)");
                 coneccion.setearparametros("@Email", Nuevo.Email);
                 coneccion.setearparametros("@Contraseña", Nuevo.Contraseña);
+                coneccion.ejecutaraccion();
             }
             catch (Exception ex)
             {

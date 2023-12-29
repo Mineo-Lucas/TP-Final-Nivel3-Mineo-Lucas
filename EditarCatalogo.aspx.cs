@@ -16,10 +16,18 @@ namespace CatalogoWeb
         {
             Seguridad seguridad = new Seguridad();
             Metodos lista = new Metodos();
-            if (!seguridad.Admin((User)Session["Logueado"]))
+            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            {
+                Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                if (!seguridad.Admin((User)Session["Logueado"]))
                 {
-                Session.Add("Error", "Necesitas admin para poder entrar");
-                Response.Redirect("Error.aspx");
+                    Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                    Response.Redirect("Error.aspx", false);
+                }
             }
             try
             {

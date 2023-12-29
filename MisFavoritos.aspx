@@ -25,7 +25,9 @@
                 <div class="card-body">
                     <h5 class="card-title"><%: favorito.Nombre %></h5>
                     <p class="card-text"><%: favorito.Descripcion %></p>
-                    <p class="card-text"><small class="text-body-secondary"><%:favorito.Precio %></small></p>
+                    <p class="card-text"><small class="text-body-secondary">precio: $<%:favorito.Precio %></small></p>
+                    <p class="card-text"><small class="text-body-secondary">codigo: <%:favorito.Codigo %></small></p>
+                    <a href="Eliminado.aspx?Id=<%:favorito.Id %>">Ver detalles/Eliminar de favoritos</a>
                 </div>
             </div>
         </div>

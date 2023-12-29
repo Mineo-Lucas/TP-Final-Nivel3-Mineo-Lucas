@@ -11,106 +11,97 @@ namespace CatalogoWeb
 {
 
 
-    public partial class Master
+    public partial class Eliminado
     {
 
         /// <summary>
-        /// Control head.
+        /// Control LblDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label LblDescripcion;
 
         /// <summary>
-        /// Control form1.
+        /// Control Label4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Control BtnMiPerfil.
+        /// Control LblPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnMiPerfil;
+        protected global::System.Web.UI.WebControls.Label LblPrecio;
 
         /// <summary>
-        /// Control BtnEditarCatalogo.
+        /// Control Label7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnEditarCatalogo;
+        protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
-        /// Control BtnListadoDeUsuarios.
+        /// Control LblCodigo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnListadoDeUsuarios;
+        protected global::System.Web.UI.WebControls.Label LblCodigo;
 
         /// <summary>
-        /// Control BtnMisFavoritos.
+        /// Control Label9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnMisFavoritos;
+        protected global::System.Web.UI.WebControls.Label Label9;
 
         /// <summary>
-        /// Control BtnLoguearse.
+        /// Control LblMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnLoguearse;
+        protected global::System.Web.UI.WebControls.Label LblMarca;
 
         /// <summary>
-        /// Control BtnRegistrarse.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnRegistrarse;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control ImgAvatar.
+        /// Control LblCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImgAvatar;
+        protected global::System.Web.UI.WebControls.Label LblCategoria;
 
         /// <summary>
-        /// Control BtnSalir.
+        /// Control BtnEliminarFavorito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSalir;
-
-        /// <summary>
-        /// Control ContentPlaceHolder1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button BtnEliminarFavorito;
     }
 }

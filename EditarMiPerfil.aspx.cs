@@ -13,6 +13,12 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Seguridad seguridad = new Seguridad();
+            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            {
+                Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
             if (!IsPostBack)
             {
                 User logueado = (User)Session["Logueado"];

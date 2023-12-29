@@ -13,12 +13,20 @@ namespace CatalogoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Seguridad segu = new Seguridad();
-            //if (!segu.Admin((User)Session["Logueado"]))
-            //{
-            // Session.Add("Error", "Necesitas admin para poder entrar");
-            // Response.Redirect("Error.aspx");
-            //}
+            Seguridad seguridad = new Seguridad();
+            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            {
+                Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                if (!seguridad.Admin((User)Session["Logueado"]))
+                {
+                    Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                    Response.Redirect("Error.aspx", false);
+                }
+            }
             try
             {
                 UserNegocio nego = new UserNegocio();

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CatalogoWeb
 {
-    public partial class VerDetalles : System.Web.UI.Page
+    public partial class Eliminado : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,18 +38,25 @@ namespace CatalogoWeb
 
                     throw ex;
                 }
-            }       
+            }
         }
-        protected void BtnAgregarFavorito_Click(object sender, EventArgs e)
+
+        protected void BtnEliminarFavorito_Click(object sender, EventArgs e)
         {
-            string Id = Request.QueryString["id"].ToString();
-            FavoritosNegocio favo = new FavoritosNegocio();
-            Favorito favorito = new Favorito();
-            User usuario = (User)Session["Logueado"];
-            favorito.IdArticulo = int.Parse(Id);
-            favorito.IdUsuario = usuario.Id;
-            favo.AgregarArticuloFavoritos(favorito);
-            Response.Redirect("MisFavoritos.aspx",false);
+            Metodos eliminar = new Metodos();
+            try
+            {
+                string id = Request.QueryString["Id"].ToString();
+                eliminar.eliminar(id);
+                Response.Redirect("MisFavoritos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
+
         }
     }
 }

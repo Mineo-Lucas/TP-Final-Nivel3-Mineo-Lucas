@@ -70,6 +70,7 @@
     <Content Include="EditarCatalogo.aspx" />
     <Content Include="EditarMiPerfil.aspx" />
     <Content Include="EditarUsers.aspx" />
+    <Content Include="Eliminado.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="ListadoDeUsuarios.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="EditarUsers.aspx.designer.cs">
       <DependentUpon>EditarUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Eliminado.aspx.cs">
+      <DependentUpon>Eliminado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eliminado.aspx.designer.cs">
+      <DependentUpon>Eliminado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

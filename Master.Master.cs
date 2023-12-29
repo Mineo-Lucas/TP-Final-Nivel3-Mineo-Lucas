@@ -19,9 +19,10 @@ namespace CatalogoWeb
             BtnSalir.Visible = false;
             BtnEditarCatalogo.Visible = false;
             BtnListadoDeUsuarios.Visible = false;
+            BtnMisFavoritos.Visible = false;
             ImgAvatar.Visible = false;
             BtnMiPerfil.Visible = false;
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is MisFavoritos))
+            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is EditarCatalogo))
             {
                 if (!seguridad.SesionActiva((User)Session["Logueado"]))
                 {
@@ -35,6 +36,7 @@ namespace CatalogoWeb
                 BtnRegistrarse.Enabled = false;
                 BtnRegistrarse.Visible = false;
                 BtnMiPerfil.Visible = true;
+                BtnMisFavoritos.Visible=true;
                 BtnSalir.Enabled = true;
                 BtnSalir.Visible = true;
 

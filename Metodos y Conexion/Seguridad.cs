@@ -19,7 +19,8 @@ namespace Metodos_y_Conexion
         }
         public bool Admin(User Logueado)
         {
-            if(Logueado.Admin)
+            User admin = Logueado;
+            if(admin.Admin==true)
             {
                 return true;
             }

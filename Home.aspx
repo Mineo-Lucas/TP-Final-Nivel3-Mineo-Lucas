@@ -27,7 +27,8 @@
                     <div class="card-body">
                         <h5 class="card-title"><%:Articulo.Nombre %></h5>
                         <p class="card-text"><%:Articulo.Descripcion %></p>
-                        <a href="VerDetalles.aspx?Id=<%:Articulo.Id %>">Ver detalles/Agregar a favoritos</a>
+                        
+
                     </div>
                 </div>
             </div>
