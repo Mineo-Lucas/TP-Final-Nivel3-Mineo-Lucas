@@ -52,8 +52,14 @@ namespace Metodos_y_Conexion
         }
         public void setearparametros(string nombre, object value)
         {
-            comando.Parameters.AddWithValue(nombre, value);
-
+            try
+            {
+                comando.Parameters.AddWithValue(nombre, value);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void ejecutarlectura()
         {

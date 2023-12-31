@@ -35,21 +35,30 @@ namespace CatalogoWeb
                 }
                 catch (Exception ex)
                 {
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx");
 
-                    throw ex;
                 }
-            }       
+            }
         }
         protected void BtnAgregarFavorito_Click(object sender, EventArgs e)
         {
-            string Id = Request.QueryString["id"].ToString();
-            FavoritosNegocio favo = new FavoritosNegocio();
-            Favorito favorito = new Favorito();
-            User usuario = (User)Session["Logueado"];
-            favorito.IdArticulo = int.Parse(Id);
-            favorito.IdUsuario = usuario.Id;
-            favo.AgregarArticuloFavoritos(favorito);
-            Response.Redirect("MisFavoritos.aspx",false);
+            try
+            {
+                string Id = Request.QueryString["id"].ToString();
+                FavoritosNegocio favo = new FavoritosNegocio();
+                Favorito favorito = new Favorito();
+                User usuario = (User)Session["Logueado"];
+                favorito.IdArticulo = int.Parse(Id);
+                favorito.IdUsuario = usuario.Id;
+                favo.AgregarArticuloFavoritos(favorito);
+                Response.Redirect("MisFavoritos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

@@ -20,8 +20,14 @@ namespace CatalogoWeb
         {
             UserNegocio conectar = new UserNegocio();
             User logueado = new User();
+            Validaciones validaciones = new Validaciones();
             try
             {
+                if (validaciones.ValidarVacioNull(TxtEmail.Text) || validaciones.ValidarVacioNull(TxtContraseña.Text))
+                {
+                    Session.Add("Error", "Debes completar todos los campos");
+                    Response.Redirect("Error.aspx", false);
+                }
                 logueado.Email = TxtEmail.Text;
                 logueado.Contraseña = TxtContraseña.Text;
                 if (conectar.Loguearse(logueado))
@@ -35,7 +41,6 @@ namespace CatalogoWeb
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
-
         }
     }
 }

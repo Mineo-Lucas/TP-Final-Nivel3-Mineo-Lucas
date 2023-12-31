@@ -43,16 +43,24 @@ namespace CatalogoWeb
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
 
         protected void DgvEditarCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Id = DgvEditarCatalogo.SelectedDataKey.Value.ToString();
-            Response.Redirect("Modificar-AgregarArticulo.aspx?Id=" + Id, false);
+            try
+            {
+                string Id = DgvEditarCatalogo.SelectedDataKey.Value.ToString();
+                Response.Redirect("Modificar-AgregarArticulo.aspx?Id=" + Id, false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
-
         protected void DgvEditarCatalogo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
@@ -60,21 +68,29 @@ namespace CatalogoWeb
 
         protected void DdlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DdlCriterio.Items.Clear();
-            if (DdlCampo.Text == "Precio")
+            try
             {
-                DdlCriterio.Items.Add("Mayor a");
-                DdlCriterio.Items.Add("Menor a");
-                DdlCriterio.Items.Add("Igual a");
+                DdlCriterio.Items.Clear();
+                if (DdlCampo.Text == "Precio")
+                {
+                    DdlCriterio.Items.Add("Mayor a");
+                    DdlCriterio.Items.Add("Menor a");
+                    DdlCriterio.Items.Add("Igual a");
+                }
+                else
+                {
+                    DdlCriterio.Items.Add("Empieza con");
+                    DdlCriterio.Items.Add("Termina con");
+                    DdlCriterio.Items.Add("Contiene");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                DdlCriterio.Items.Add("Empieza con");
-                DdlCriterio.Items.Add("Termina con");
-                DdlCriterio.Items.Add("Contiene");
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
         }
-
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             Metodos BuscadoAvanzado = new Metodos();
@@ -88,7 +104,6 @@ namespace CatalogoWeb
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
-
         }
     }
 }

@@ -20,8 +20,14 @@ namespace CatalogoWeb
         {
             UserNegocio negocio = new UserNegocio();
             User nuevo = new User();
+            Validaciones validaciones = new Validaciones();
             try
             {
+                if (validaciones.ValidarVacioNull(TxtEmail.Text) || validaciones.ValidarVacioNull(TxtContraseña.Text))
+                {
+                    Session.Add("Error", "Debes completar todos los campos");
+                    Response.Redirect("Error.aspx", false);
+                }
                 nuevo.Email = TxtEmail.Text;
                 nuevo.Contraseña = TxtContraseña.Text;
                 if (negocio.email(nuevo.Email))

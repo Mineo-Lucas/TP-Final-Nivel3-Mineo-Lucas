@@ -59,18 +59,18 @@ namespace CatalogoWeb
                         }
                         catch (Exception ex)
                         {
-                            throw ex;
+                            Session.Add("Error", ex.ToString());
+                            Response.Redirect("Error.aspx", false);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-
-                    throw ex;
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx", false);
                 }
             }
         }
-
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
             User modificado = new User();
@@ -90,12 +90,10 @@ namespace CatalogoWeb
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex);
+                Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
-
         }
-
         protected void BtnEliminar_Click(object sender, EventArgs e)
         {
             UserNegocio neg = new UserNegocio();
@@ -107,7 +105,7 @@ namespace CatalogoWeb
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
+                Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx", false);
             }
         }

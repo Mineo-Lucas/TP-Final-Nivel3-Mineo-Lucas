@@ -11,20 +11,34 @@ namespace Metodos_y_Conexion
     {
         public bool SesionActiva(User Logueado)
         {
-            if (Logueado != null)
+            try
             {
-                return true;
+                if (Logueado != null)
+                {
+                    return true;
+                }
+                else return false;
             }
-            else return false;
+            catch (Exception ex)
+            {
+                throw ex;
+            } 
         }
         public bool Admin(User Logueado)
         {
-            User admin = Logueado;
-            if(admin.Admin==true)
+            try
             {
-                return true;
+                User admin = Logueado;
+                if (admin.Admin == true)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public bool EmailVacio()
         {

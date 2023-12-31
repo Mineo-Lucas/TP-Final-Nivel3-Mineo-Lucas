@@ -8,6 +8,16 @@ namespace Metodos_y_Conexion
 {
     public class Validaciones
     {
-
+        public bool ValidarVacioNull(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
     }
 }

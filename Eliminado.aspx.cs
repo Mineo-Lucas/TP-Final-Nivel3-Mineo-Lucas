@@ -31,16 +31,14 @@ namespace CatalogoWeb
                     LblPrecio.Text = Seleccionado.Precio.ToString();
                     LblMarca.Text = Seleccionado.Marca.ToString();
                     LblCategoria.Text = Seleccionado.categoria.ToString();
-
                 }
                 catch (Exception ex)
                 {
-
-                    throw ex;
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx", false);
                 }
             }
         }
-
         protected void BtnEliminarFavorito_Click(object sender, EventArgs e)
         {
             Metodos eliminar = new Metodos();
@@ -52,11 +50,9 @@ namespace CatalogoWeb
             }
             catch (Exception ex)
             {
-
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("Error.aspx");
             }
-
         }
     }
 }

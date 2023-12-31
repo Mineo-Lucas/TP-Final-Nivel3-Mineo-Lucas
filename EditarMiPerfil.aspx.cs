@@ -38,7 +38,8 @@ namespace CatalogoWeb
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx", false);
                 }
             }
         }

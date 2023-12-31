@@ -304,15 +304,22 @@ namespace Metodos_y_Conexion
         public bool email(string email)
         {
             ConexionDB conec = new ConexionDB();
-            conec.setearconsulta("select email from USERS where email= @Email");
-            conec.setearparametros("@Email", email);
-            conec.ejecutarlectura();
-            if (conec.Lector.Read())
+            try
             {
-                return false;
+                conec.setearconsulta("select email from USERS where email= @Email");
+                conec.setearparametros("@Email", email);
+                conec.ejecutarlectura();
+                if (conec.Lector.Read())
+                {
+                    return false;
+                }
+                return true;
             }
+            catch (Exception ex)
+            {
 
-            return true;
+                throw ex;
+            }
         }
     }
 }
