@@ -3,19 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div>
         <h1>Home
         </h1>
     </div>
     <div>
-        <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
-        <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-        <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
-        <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
-        <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
-        <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
-        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click"
-            />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
+                <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
+                <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
+                <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
+                <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />
     </div>
     <div>
         <div class="row row-cols-1 row-cols-md-3 g-4">

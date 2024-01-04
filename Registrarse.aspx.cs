@@ -40,7 +40,6 @@ namespace CatalogoWeb
                     Session.Add("Error", "Este email ya esta registrado");
                     Response.Redirect("Error.aspx",false);
                 }
-
             }
             catch (Exception ex)
             {

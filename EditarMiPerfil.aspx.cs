@@ -21,9 +21,9 @@ namespace CatalogoWeb
             }
             if (!IsPostBack)
             {
-                User logueado = (User)Session["Logueado"];
                 try
                 {
+                    User logueado = (User)Session["Logueado"];
                     if (logueado.Nombre != null)
                     {
                         TxtNombre.Text = logueado.Nombre;
@@ -32,6 +32,11 @@ namespace CatalogoWeb
                     {
                         TxtApellido.Text = logueado.Apellido;
                     }
+                    if (logueado.Imagen != null)
+                    {
+                        ImgImagen.ImageUrl = "~/Imagen/" + logueado.Imagen + "?v=" + DateTime.Now.Ticks.ToString();
+                    }
+
                     TxtId.Text = logueado.Id.ToString();
                     TxtId.Enabled = false;
                     TxtId.Visible = false;
@@ -57,7 +62,12 @@ namespace CatalogoWeb
                 Logueado.Id = int.Parse(TxtId.Text);
                 nego.ModificarUsuario(Logueado);
                 Image img = (Image)Master.FindControl("ImgAvatar");
-                img.ImageUrl = "~/imagen/" + Logueado.Imagen;
+                img.ImageUrl = "~/Imagen/" + Logueado.Imagen + "?v=" + DateTime.Now.Ticks.ToString();
+                if (Logueado.Imagen != null)
+                {
+                    ImgImagen.ImageUrl = "~/Imagen/" + Logueado.Imagen + "?v=" + DateTime.Now.Ticks.ToString();
+                }
+                Response.Redirect("Home.aspx", false);
             }
             catch (Exception ex)
             {

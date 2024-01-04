@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,6 +44,18 @@ namespace Metodos_y_Conexion
         public bool EmailVacio()
         {
             
+            return false;
+        }
+        public bool EmailRepetido(string email)
+        {
+            ConexionDB conexion = new ConexionDB();
+            conexion.setearconsulta("select email from USERS where email=@email");
+            conexion.setearparametros("@Email", email);
+            conexion.ejecutarlectura();
+            if (conexion.Lector.Read())
+            {
+                return true;
+            }
             return false;
         }
     }

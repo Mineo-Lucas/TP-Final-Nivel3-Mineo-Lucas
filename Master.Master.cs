@@ -44,7 +44,7 @@ namespace CatalogoWeb
                 if (Logueado.Imagen != "")
                 {
                     ImgAvatar.Visible = true;
-                    ImgAvatar.ImageUrl = "~/imagen/" + Logueado.Imagen;
+                    ImgAvatar.ImageUrl = "~/Imagen/" + Logueado.Imagen + "?v=" + DateTime.Now.Ticks.ToString();
                 }
                 else
                 {
