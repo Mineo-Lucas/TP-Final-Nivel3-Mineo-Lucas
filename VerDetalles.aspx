@@ -7,6 +7,9 @@
             Nombre
         </h1>
     </div>
+    <div>
+        <asp:Image ID="ImgArticulo" runat="server" />
+    </div>
      <div>
         <asp:Label ID="LblDescripcion" runat="server" Text="descripcion"></asp:Label>
     </div>

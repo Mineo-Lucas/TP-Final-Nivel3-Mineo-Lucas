@@ -17,6 +17,7 @@
                 <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
                 <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
                 <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ErrorMessage="solo numeros" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />

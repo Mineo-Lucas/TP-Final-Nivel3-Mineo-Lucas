@@ -177,34 +177,37 @@ namespace Metodos_y_Conexion
             ConexionDB conec = new ConexionDB();
             try
             {
-                string consulta = ("select Codigo,Nombre,a.Descripcion,c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca,a.Id from ARTICULOS a, CATEGORIAS c, MARCAS m where c.Id=IdCategoria and m.Id=IdMarca and  ");
+                string consulta = ("select Codigo,Nombre,a.Descripcion,c.Descripcion Categoria,m.Descripcion Marca,ImagenUrl,Precio,a.IdCategoria,a.IdMarca,a.Id from ARTICULOS a, CATEGORIAS c, MARCAS m where c.Id=IdCategoria and m.Id=IdMarca  ");
                 switch (campo)
                 {
                     case "Precio":
-                        switch (criterio)
+                        if (filtro!= "")
                         {
-                            case "Mayor a":
-                                consulta += "Precio >" + filtro;
-                                break;
-                            case "Menor a":
-                                consulta += "Precio <" + filtro;
-                                break;
-                            default:
-                                consulta += "precio =" + filtro;
-                                break;
+                            switch (criterio)
+                            {
+                                case "Mayor a":
+                                    consulta += "and Precio >" + filtro;
+                                    break;
+                                case "Menor a":
+                                    consulta += "and Precio <" + filtro;
+                                    break;
+                                default:
+                                    consulta += "and precio =" + filtro;
+                                    break;
+                            }
                         }
                         break;
                     case "Codigo":
                         switch (criterio)
                         {
-                            case "Empienza con":
-                                consulta += "Codigo like '" +filtro+ "%'";
+                            case "Empieza con":
+                                consulta += "and Codigo like '" +filtro+ "%'";
                                 break;
                             case "Termina con":
-                                consulta += "Codigo like '%" + filtro+ "'";
+                                consulta += "and Codigo like '%" + filtro+ "'";
                                 break;
                             case "Contiene":
-                                consulta += "Codigo like '%" + filtro + "%'";
+                                consulta += "and Codigo like '%" + filtro + "%'";
                                 break;
                         }
                         break;
@@ -212,13 +215,13 @@ namespace Metodos_y_Conexion
                         switch (criterio)
                         {
                             case "Empieza con":
-                                consulta += "Nombre like '" + filtro + "%'";
+                                consulta += "and Nombre like '" + filtro + "%'";
                                 break;
                             case "Termina con":
-                                consulta += "Nombre like '%" + filtro + "'";
+                                consulta += "and Nombre like '%" + filtro + "'";
                                 break;
                             case "Contiene":
-                                consulta += "Nombre like '%" + filtro + "%'";
+                                consulta += "and Nombre like '%" + filtro + "%'";
                                 break;
                         }
                         break;

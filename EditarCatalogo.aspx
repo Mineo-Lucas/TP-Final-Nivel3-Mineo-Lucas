@@ -3,18 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div>
         <h1>Editar Catalogo
-    </h1>
+        </h1>
     </div>
     <div>
-        <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
-        <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-        <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
-        <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
-        <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
-        <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
-        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click"/>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
+                <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
+                <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
+                <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
+                <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ErrorMessage="solo numeros" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />
     </div>
     <asp:GridView runat="server" ID="DgvEditarCatalogo"
         DataKeyNames="Id" AutoGenerateColumns="false" CssClass="table table-dark border-danger"

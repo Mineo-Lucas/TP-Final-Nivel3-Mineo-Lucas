@@ -38,6 +38,10 @@ namespace CatalogoWeb
                     DdlCampo.Items.Add("Nombre");
                     DdlCampo.Items.Add("Codigo");
                     DdlCampo.Items.Add("Precio");
+                    DdlCriterio.Items.Add("Empieza con");
+                    DdlCriterio.Items.Add("Termina con");
+                    DdlCriterio.Items.Add("Contiene");
+                    RevFiltro.Enabled=false;
                 }
             }
             catch (Exception ex)
@@ -76,12 +80,14 @@ namespace CatalogoWeb
                     DdlCriterio.Items.Add("Mayor a");
                     DdlCriterio.Items.Add("Menor a");
                     DdlCriterio.Items.Add("Igual a");
+                    RevFiltro.Enabled= true;
                 }
                 else
                 {
                     DdlCriterio.Items.Add("Empieza con");
                     DdlCriterio.Items.Add("Termina con");
                     DdlCriterio.Items.Add("Contiene");
+                    RevFiltro.Enabled = false;
                 }
             }
             catch (Exception ex)

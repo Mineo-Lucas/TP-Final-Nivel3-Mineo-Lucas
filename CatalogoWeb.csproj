@@ -69,12 +69,10 @@
   <ItemGroup>
     <Content Include="EditarCatalogo.aspx" />
     <Content Include="EditarMiPerfil.aspx" />
-    <Content Include="EditarUsers.aspx" />
     <Content Include="Eliminado.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
-    <Content Include="ListadoDeUsuarios.aspx" />
     <Content Include="Loguearse.aspx" />
     <Content Include="MisFavoritos.aspx" />
     <Content Include="Modificar-AgregarArticulo.aspx" />
@@ -96,13 +94,6 @@
     </Compile>
     <Compile Include="EditarMiPerfil.aspx.designer.cs">
       <DependentUpon>EditarMiPerfil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EditarUsers.aspx.cs">
-      <DependentUpon>EditarUsers.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EditarUsers.aspx.designer.cs">
-      <DependentUpon>EditarUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Eliminado.aspx.cs">
       <DependentUpon>Eliminado.aspx</DependentUpon>
@@ -127,13 +118,6 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ListadoDeUsuarios.aspx.cs">
-      <DependentUpon>ListadoDeUsuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListadoDeUsuarios.aspx.designer.cs">
-      <DependentUpon>ListadoDeUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Loguearse.aspx.cs">
       <DependentUpon>Loguearse.aspx</DependentUpon>

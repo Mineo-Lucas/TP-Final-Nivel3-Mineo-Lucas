@@ -35,6 +35,11 @@ namespace CatalogoWeb
                     Session.Add("Logueado", logueado);
                     Response.Redirect("Home.aspx", false);
                 }
+                else
+                {
+                    Session.Add("Error", "Usuario o contraseña incorrectos");
+                    Response.Redirect("Error.aspx", false);
+                }
             }
             catch (Exception ex)
             {

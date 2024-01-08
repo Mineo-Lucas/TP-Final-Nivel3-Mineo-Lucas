@@ -3,15 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <h1>Mis Favoritos
     </h1>
     <div>
-        <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
-        <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-        <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
-        <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
-        <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
-        <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="Campo:"></asp:Label>
+                <asp:DropDownList ID="DdlCampo" runat="server" OnSelectedIndexChanged="DdlCampo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:Label ID="Label2" runat="server" Text="Criterio:"></asp:Label>
+                <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
+                <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
+                <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ErrorMessage="solo numeros" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />
     </div>
     <%foreach (var favorito in ListaArticulosfav)
@@ -19,7 +25,7 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
+                <img src="<%: favorito.Imagen %>" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">

@@ -14,10 +14,15 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            if (seguridad.SesionActiva((User)Session["Logueado"]))
             {
-                Session.Add("Error", "Necesitas tener permiso de User para poder ingresar");
-                Response.Redirect("Error.aspx", false);
+                BtnAgregarFavorito.Visible = true;
+                BtnAgregarFavorito.Enabled = true;
+            }
+            else
+            {
+                BtnAgregarFavorito.Enabled=false;
+                BtnAgregarFavorito.Visible=false;
             }
             Metodos metodos = new Metodos();
             if (!IsPostBack)
@@ -31,6 +36,7 @@ namespace CatalogoWeb
                     LblPrecio.Text = Seleccionado.Precio.ToString();
                     LblMarca.Text = Seleccionado.Marca.ToString();
                     LblCategoria.Text = Seleccionado.categoria.ToString();
+                    ImgArticulo.ImageUrl = Seleccionado.Imagen;
 
                 }
                 catch (Exception ex)
