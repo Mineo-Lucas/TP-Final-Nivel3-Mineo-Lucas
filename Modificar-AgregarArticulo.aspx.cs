@@ -15,66 +15,73 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            if (seguridad.SesionActiva((User)Session["Logueado"]))
             {
-                Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
-                Response.Redirect("Error.aspx", false);
-            }
-            else
-            {
-                if (!seguridad.Admin((User)Session["Logueado"]))
+                if (seguridad.Admin((User)Session["Logueado"]))
+                {
+                    TxtId.Enabled = false;
+                    if (!IsPostBack)
+                    {
+                        MarcasMetodo marca = new MarcasMetodo();
+                        CategoriaMetodo cate = new CategoriaMetodo();
+                        try
+                        {
+                            List<Categoria> categoriaslista = cate.listarcategoria();
+                            DdlCategoria.DataSource = categoriaslista;
+                            DdlCategoria.DataTextField = "Categoria";
+                            DdlCategoria.DataValueField = "Id";
+                            DdlCategoria.DataBind();
+                            DdlMarca.DataSource = marca.listarMarcas();
+                            DdlMarca.DataTextField = "marca";
+                            DdlMarca.DataValueField = "id";
+                            DdlMarca.DataBind();
+                            TxtId.Visible = false;
+                            Label8.Visible = false;
+
+                            string Id = Request.QueryString["Id"] != null ? Id = Request.QueryString["Id"].ToString() : Id = "";
+                            if (Id != "")
+                            {
+                                Metodos metodo = new Metodos();
+                                Articulo Seleccionado = (metodo.BuscarArticuloPorId(Id))[0];
+                                try
+                                {
+                                    TxtId.Visible = true;
+                                    Label8.Visible = true;
+                                    TxtId.Text = Id.ToString();
+                                    TxtNombre.Text = Seleccionado.Nombre;
+                                    TxtDescripcion.Text = Seleccionado.Descripcion;
+                                    TxtPrecio.Text = Seleccionado.Precio.ToString();
+                                    TxtCodigo.Text = Seleccionado.Codigo;
+                                    TxtImagen.Text = Seleccionado.Imagen;
+                                    DdlCategoria.SelectedValue = Seleccionado.categoria.Id.ToString();
+                                    DdlMarca.SelectedValue = Seleccionado.Marca.id.ToString();
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw ex;
+                                }
+                                BtnAceptar.Text = "Modificar";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Session.Add("Error", ex);
+                            Response.Redirect("Error.aspx", false);
+                        }
+                    }
+                }
+                else
                 {
                     Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
                     Response.Redirect("Error.aspx", false);
                 }
             }
-            TxtId.Enabled = false;
-            if (!IsPostBack)
+            else
             {
-                MarcasMetodo marca = new MarcasMetodo();
-                CategoriaMetodo cate = new CategoriaMetodo();
-                try
-                {
-                    List<Categoria> categoriaslista = cate.listarcategoria();
-                    DdlCategoria.DataSource = categoriaslista;
-                    DdlCategoria.DataTextField = "Categoria";
-                    DdlCategoria.DataValueField = "Id";
-                    DdlCategoria.DataBind();
-                    DdlMarca.DataSource = marca.listarMarcas();
-                    DdlMarca.DataTextField = "marca";
-                    DdlMarca.DataValueField = "id";
-                    DdlMarca.DataBind();
-
-                    string Id = Request.QueryString["Id"] != null ? Id = Request.QueryString["Id"].ToString() : Id = "";
-                    if (Id != "")
-                    {
-                        Metodos metodo = new Metodos();
-                        Articulo Seleccionado = (metodo.BuscarArticuloPorId(Id))[0];
-                        try
-                        {
-                            TxtId.Text = Id.ToString();
-                            TxtNombre.Text = Seleccionado.Nombre;
-                            TxtDescripcion.Text = Seleccionado.Descripcion;
-                            TxtPrecio.Text = Seleccionado.Precio.ToString();
-                            TxtCodigo.Text = Seleccionado.Codigo;
-                            TxtImagen.Text = Seleccionado.Imagen;
-                            DdlCategoria.SelectedValue = Seleccionado.categoria.Id.ToString();
-                            DdlMarca.SelectedValue = Seleccionado.Marca.id.ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        BtnAceptar.Text = "Modificar";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Session.Add("Error", ex);
-                    Response.Redirect("Error.aspx", false);
-                }
-
+                Session.Add("Error", "Necesitas tener permiso de admin para poder ingresar");
+                Response.Redirect("Error.aspx", false);
             }
+
         }
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
@@ -85,7 +92,10 @@ namespace CatalogoWeb
             {
                 nuevo.Nombre = TxtNombre.Text;
                 nuevo.Descripcion = TxtDescripcion.Text;
-                nuevo.Precio = decimal.Parse(TxtPrecio.Text);
+                if (TxtPrecio.Text != "")
+                {
+                    nuevo.Precio = decimal.Parse(TxtPrecio.Text);
+                }
                 nuevo.Codigo = TxtCodigo.Text;
                 nuevo.Imagen = TxtImagen.Text;
                 nuevo.Marca = new Marcas();

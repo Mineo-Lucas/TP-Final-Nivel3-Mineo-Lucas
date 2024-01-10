@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div class="row">
+    <div class="mb-3">
         <h1>Editar Perfil</h1>
     </div>
-    <div class="row">
         <div class="col-md-4">
-            <div>
+            <div class="mb-3">
                 <asp:Label ID="Nombre" runat="server" Text="Nombre:"></asp:Label>
                 <asp:TextBox ID="TxtNombre" runat="server" CssClass="input-group-text"></asp:TextBox>
             </div>
@@ -16,9 +16,13 @@
                 <asp:Label ID="Label2" runat="server" Text="Apellido:"></asp:Label>
                 <asp:TextBox ID="TxtApellido" runat="server" CssClass="input-group-text"></asp:TextBox>
             </div>
+            <div>
+                <asp:Label ID="Label1" runat="server" Text="Email:"></asp:Label>
+                <asp:TextBox ID="TxtEmail" runat="server" CssClass="input-group-text"></asp:TextBox>
+            </div>
         </div>
                 <div class="col-md-4">
-                    <div>
+                    <div class="mb-3">
                         <asp:Label ID="Label3" runat="server" Text="Imagen:"></asp:Label>
                         <input type="file" id="TxtImagen" runat="server" class="form-control1" />
                     </div>

@@ -31,9 +31,9 @@ namespace CatalogoWeb
         }
         void Application_Error(object sender, EventArgs e)
         {
-            //Exception exc = Server.GetLastError();
-            //Session.Add("Error", exc.ToString());
-            //Server.Transfer("Error.aspx", true);
+            Exception exc = Server.GetLastError();
+            Session.Add("Error", exc.ToString());
+            Server.Transfer("Error.aspx", true);
         }
 
         protected void Session_End(object sender, EventArgs e)

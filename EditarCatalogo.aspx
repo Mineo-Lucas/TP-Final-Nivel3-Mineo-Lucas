@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="EditarCatalogo.aspx.cs" Inherits="CatalogoWeb.EditarCatalogo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -17,14 +23,15 @@
                 <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
                 <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
                 <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ErrorMessage="solo numeros" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="solo numeros" CssClass="validacion" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />
     </div>
     <asp:GridView runat="server" ID="DgvEditarCatalogo"
-        DataKeyNames="Id" AutoGenerateColumns="false" CssClass="table table-dark border-danger"
-        OnSelectedIndexChanged="DgvEditarCatalogo_SelectedIndexChanged" OnSelectedPageChanging="DgvEditarCatalogo_SelectedIndexChanging">
+        DataKeyNames="Id" AutoGenerateColumns="false" CssClass="table table-dark border-danger" 
+        OnSelectedIndexChanged="DgvEditarCatalogo_SelectedIndexChanged" OnPageIndexChanging="DgvEditarCatalogo_PageIndexChanging"
+        AllowPaging="true" PageSize="7">
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="Id" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -36,5 +43,6 @@
             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Seleccionar" />
         </Columns>
     </asp:GridView>
-    <a href="Home.aspx">Volver</a>
+    <asp:Button ID="BtnAgregarArticulo" runat="server" CssClass="btn btn-primary" Text="Agregar Articulo" OnClick="BtnAgregarArticulo_Click" />
+    <a href="Home.aspx">Volver al home</a>
 </asp:Content>

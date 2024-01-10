@@ -15,6 +15,24 @@ namespace CatalogoWeb
     {
 
         /// <summary>
+        /// Control LblNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNombre;
+
+        /// <summary>
+        /// Control ImgArticulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgArticulo;
+
+        /// <summary>
         /// Control LblDescripcion.
         /// </summary>
         /// <remarks>

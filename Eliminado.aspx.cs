@@ -14,29 +14,34 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            if (seguridad.SesionActiva((User)Session["Logueado"]))
+            {
+                Metodos metodos = new Metodos();
+                if (!IsPostBack)
+                {
+                    try
+                    {
+                        string Id = Request.QueryString["id"].ToString();
+                        Articulo Seleccionado = (metodos.BuscarArticuloPorId(Id))[0];
+                        LblNombre.Text = Seleccionado.Nombre;
+                        ImgArticulo.ImageUrl = Seleccionado.Imagen;
+                        LblDescripcion.Text = Seleccionado.Descripcion;
+                        LblCodigo.Text = Seleccionado.Codigo;
+                        LblPrecio.Text = Seleccionado.Precio.ToString();
+                        LblMarca.Text = Seleccionado.Marca.ToString();
+                        LblCategoria.Text = Seleccionado.categoria.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Session.Add("Error", ex.ToString());
+                        Response.Redirect("Error.aspx", false);
+                    }
+                }
+            }
+            else
             {
                 Session.Add("Error", "Necesitas tener permiso de User para poder ingresar");
                 Response.Redirect("Error.aspx", false);
-            }
-            Metodos metodos = new Metodos();
-            if (!IsPostBack)
-            {
-                try
-                {
-                    string Id = Request.QueryString["id"].ToString();
-                    Articulo Seleccionado = (metodos.BuscarArticuloPorId(Id))[0];
-                    LblDescripcion.Text = Seleccionado.Descripcion;
-                    LblCodigo.Text = Seleccionado.Codigo;
-                    LblPrecio.Text = Seleccionado.Precio.ToString();
-                    LblMarca.Text = Seleccionado.Marca.ToString();
-                    LblCategoria.Text = Seleccionado.categoria.ToString();
-                }
-                catch (Exception ex)
-                {
-                    Session.Add("Error", ex.ToString());
-                    Response.Redirect("Error.aspx", false);
-                }
             }
         }
         protected void BtnEliminarFavorito_Click(object sender, EventArgs e)

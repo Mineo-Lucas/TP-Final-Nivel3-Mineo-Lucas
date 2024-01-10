@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MisFavoritos.aspx.cs" Inherits="CatalogoWeb.MisFavoritos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion{
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -15,11 +21,12 @@
                 <asp:DropDownList ID="DdlCriterio" runat="server"></asp:DropDownList>
                 <asp:Label ID="Label3" runat="server" Text="Filtro:"></asp:Label>
                 <asp:TextBox ID="TxtFiltroAvanzado" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ErrorMessage="solo numeros" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="solo numeros" CssClass="validacion" ValidationExpression="^[0-9]+$" ID="RevFiltro" ControlToValidate="TxtFiltroAvanzado" runat="server" />
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click" />
     </div>
+    <div class="alert-link column-gap-lg-5 row row-cols-1 row-cols-md-3">
     <%foreach (var favorito in ListaArticulosfav)
         {%>
     <div class="card mb-3" style="max-width: 540px;">
@@ -39,4 +46,5 @@
         </div>
     </div>
     <%} %>
+        </div>
 </asp:Content>

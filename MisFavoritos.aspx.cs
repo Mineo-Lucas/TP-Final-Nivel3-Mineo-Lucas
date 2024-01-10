@@ -17,32 +17,35 @@ namespace CatalogoWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Seguridad seguridad = new Seguridad();
-            if (!seguridad.SesionActiva((User)Session["Logueado"]))
+            if (seguridad.SesionActiva((User)Session["Logueado"]))
+            {
+                FavoritosNegocio listafavo = new FavoritosNegocio();
+                try
+                {
+                    User usuario = (User)Session["Logueado"];
+                    ListaArticulosfav = listafavo.ListarFavoritos(usuario.Id);
+                    if (!IsPostBack)
+                    {
+                        DdlCampo.Items.Add("Nombre");
+                        DdlCampo.Items.Add("Codigo");
+                        DdlCampo.Items.Add("Precio");
+                        DdlCriterio.Items.Add("Empieza con");
+                        DdlCriterio.Items.Add("Termina con");
+                        DdlCriterio.Items.Add("Contiene");
+                        RevFiltro.Enabled = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("Error", ex.ToString());
+                    Response.Redirect("Error.aspx", false);
+                }
+            }
+            else
             {
                 Session.Add("Error", "Necesitas tener permiso de User para poder ingresar");
                 Response.Redirect("Error.aspx", false);
-            }
-            FavoritosNegocio listafavo = new FavoritosNegocio();
-            try
-            {
-                User usuario = (User)Session["Logueado"];
-                ListaArticulosfav = listafavo.ListarFavoritos(usuario.Id);
-                if (!IsPostBack)
-                {
-                    DdlCampo.Items.Add("Nombre");
-                    DdlCampo.Items.Add("Codigo");
-                    DdlCampo.Items.Add("Precio");
-                    DdlCriterio.Items.Add("Empieza con");
-                    DdlCriterio.Items.Add("Termina con");
-                    DdlCriterio.Items.Add("Contiene");
-                    RevFiltro.Enabled=false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx", false);
-            }
+            }      
         }
         protected void DdlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {

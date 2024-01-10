@@ -42,24 +42,6 @@ namespace CatalogoWeb
         protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnMiPerfil;
 
         /// <summary>
-        /// Control BtnEditarCatalogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnEditarCatalogo;
-
-        /// <summary>
-        /// Control BtnListadoDeUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnListadoDeUsuarios;
-
-        /// <summary>
         /// Control BtnMisFavoritos.
         /// </summary>
         /// <remarks>
@@ -67,6 +49,15 @@ namespace CatalogoWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnMisFavoritos;
+
+        /// <summary>
+        /// Control BtnEditarCatalogo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BtnEditarCatalogo;
 
         /// <summary>
         /// Control BtnLoguearse.
@@ -94,6 +85,15 @@ namespace CatalogoWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImgAvatar;
+
+        /// <summary>
+        /// Control LblEmailUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblEmailUsuario;
 
         /// <summary>
         /// Control BtnSalir.

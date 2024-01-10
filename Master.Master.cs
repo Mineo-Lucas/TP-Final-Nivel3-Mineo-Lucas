@@ -18,7 +18,6 @@ namespace CatalogoWeb
             BtnSalir.Enabled = false;
             BtnSalir.Visible = false;
             BtnEditarCatalogo.Visible = false;
-            BtnListadoDeUsuarios.Visible = false;
             BtnMisFavoritos.Visible = false;
             ImgAvatar.Visible = false;
             BtnMiPerfil.Visible = false;
@@ -39,8 +38,8 @@ namespace CatalogoWeb
                 BtnMisFavoritos.Visible=true;
                 BtnSalir.Enabled = true;
                 BtnSalir.Visible = true;
-
                 User Logueado = (User)Session["Logueado"];
+                LblEmailUsuario.Text = Logueado.Email;
                 if (Logueado.Imagen != "")
                 {
                     ImgAvatar.Visible = true;
@@ -54,7 +53,6 @@ namespace CatalogoWeb
                 if (seguridad.Admin((User)Session["Logueado"]))
                 {
                     BtnEditarCatalogo.Visible = true;
-                    BtnListadoDeUsuarios.Visible = true;
                 }
             }
         }

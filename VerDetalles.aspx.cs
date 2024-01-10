@@ -31,6 +31,7 @@ namespace CatalogoWeb
                 {
                     string Id = Request.QueryString["id"].ToString();
                     Articulo Seleccionado = (metodos.BuscarArticuloPorId(Id))[0];
+                    LblNombre.Text = Seleccionado.Nombre;
                     LblDescripcion.Text = Seleccionado.Descripcion;
                     LblCodigo.Text = Seleccionado.Codigo;
                     LblPrecio.Text = Seleccionado.Precio.ToString();

@@ -2,13 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <figure class="text-center">
     <div>
         <h1>
-            Nombre
+            <asp:Label ID="LblNombre" runat="server" Text=""></asp:Label>
         </h1>
     </div>
     <div>
-        <asp:Image ID="ImgArticulo" runat="server" />
+        <asp:Image ID="ImgArticulo" runat="server" CssClass="img-fluid mb-3"/>
     </div>
      <div>
         <asp:Label ID="LblDescripcion" runat="server" Text="descripcion"></asp:Label>
@@ -33,4 +34,5 @@
         <asp:Button ID="BtnAgregarFavorito" runat="server" Text="Agregar a favoritos" CssClass="btn btn-warning" OnClick="BtnAgregarFavorito_Click"/>
         <a href="Home.aspx">Volver</a>
     </div>
+        </figure>
 </asp:Content>
