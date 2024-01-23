@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using clases;
 using System.Security.Cryptography.X509Certificates;
-
+using System.Configuration;
 
 namespace Metodos_y_Conexion
 {
@@ -19,14 +19,11 @@ namespace Metodos_y_Conexion
         {
             get { return lector; }
         }
-
-
-
         public ConexionDB()
         {
             try
             {
-                conexion=new SqlConnection("Server=DESKTOP-E7IU7EN\\SQLEXPRESS;DataBase=CATALOGO_WEB_DB;integrated security=true");
+                conexion =new SqlConnection(ConfigurationManager.AppSettings["CadenaConexion"]);
                 comando = new SqlCommand();
                 
             }

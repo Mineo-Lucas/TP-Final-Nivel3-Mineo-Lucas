@@ -37,12 +37,12 @@
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
             <asp:BoundField HeaderText="Imagen" DataField="Imagen" />
-            <asp:BoundField HeaderText="Precio" DataField="Precio" />
+            <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:F2}"/>
             <asp:BoundField HeaderText="Marca" DataField="Marca" />
             <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="Seleccionar" />
         </Columns>
     </asp:GridView>
     <asp:Button ID="BtnAgregarArticulo" runat="server" CssClass="btn btn-primary" Text="Agregar Articulo" OnClick="BtnAgregarArticulo_Click" />
-    <a href="Home.aspx">Volver al home</a>
+    <a href="Default.aspx">Volver al home</a>
 </asp:Content>

@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,13 +50,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="UserNegocio.cs" />
-    <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\clases\clases.csproj">
       <Project>{6edf89dc-63c0-4da1-ad6d-ee2c653025b3}</Project>
       <Name>clases</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="script_db\script_DB.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

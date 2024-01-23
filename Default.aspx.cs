@@ -9,7 +9,7 @@ using Metodos_y_Conexion;
 
 namespace CatalogoWeb
 {
-    public partial class Home : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)

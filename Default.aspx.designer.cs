@@ -11,7 +11,7 @@ namespace CatalogoWeb
 {
 
 
-    public partial class Home
+    public partial class Default
     {
 
         /// <summary>

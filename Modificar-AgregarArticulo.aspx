@@ -28,7 +28,7 @@
         <asp:TextBox ID="TxtImagen" runat="server" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>
-        <asp:Label ID="Label5" runat="server" Text="Precio:"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Text="Precio:$"></asp:Label>
         <asp:TextBox ID="TxtPrecio" runat="server" CssClass="input-group-text"></asp:TextBox>
     </div>
     <div>

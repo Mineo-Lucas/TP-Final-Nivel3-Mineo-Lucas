@@ -22,6 +22,6 @@
     </div>
     <div>
         <asp:Button ID="BtnRegistrarse" runat="server" Text="Registrarse" CssClass="btn btn-primary" OnClick="BtnRegistrarse_Click"/>
-        <a href="Home.aspx">Cancelar</a>
+        <a href="Default.aspx">Cancelar</a>
     </div>
 </asp:Content>

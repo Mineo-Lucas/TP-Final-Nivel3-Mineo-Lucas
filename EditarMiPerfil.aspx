@@ -34,7 +34,8 @@
         <div class="col-md-4">
             <asp:TextBox ID="TxtId" runat="server" CssClass="input-group-text"></asp:TextBox>
             <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="BtnGuardar_Click"/>
-            <a href="Home.aspx">Cancelar</a>
+            <asp:Button ID="BtnCambiarContraseña" runat="server" Text="Cambiar Contraseña" CssClass="btn btn-warning" OnClick="BtnCambiarContraseña_Click" />
+            <a href="Default.aspx">Cancelar</a>
         </div>
     </div>
 </asp:Content>

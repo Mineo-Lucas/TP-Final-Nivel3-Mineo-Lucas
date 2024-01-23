@@ -67,12 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CambiarContrasena.aspx" />
     <Content Include="EditarCatalogo.aspx" />
     <Content Include="EditarMiPerfil.aspx" />
     <Content Include="Eliminado.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Home.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Loguearse.aspx" />
     <Content Include="MisFavoritos.aspx" />
     <Content Include="Modificar-AgregarArticulo.aspx" />
@@ -81,6 +82,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CambiarContrasena.aspx.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarContrasena.aspx.designer.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditarCatalogo.aspx.cs">
       <DependentUpon>EditarCatalogo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,12 +120,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Loguearse.aspx.cs">
       <DependentUpon>Loguearse.aspx</DependentUpon>

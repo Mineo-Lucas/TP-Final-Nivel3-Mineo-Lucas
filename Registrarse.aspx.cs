@@ -20,26 +20,29 @@ namespace CatalogoWeb
         {
             UserNegocio negocio = new UserNegocio();
             User nuevo = new User();
-            Validaciones validaciones = new Validaciones();
+            Seguridad segu = new Seguridad();
             try
             {
-                if (validaciones.ValidarVacioNull(TxtEmail.Text) || validaciones.ValidarVacioNull(TxtContraseña.Text))
+                if (segu.ValidarVacioNull(TxtEmail.Text) && segu.ValidarVacioNull(TxtContraseña.Text))
                 {
-                    Session.Add("Error", "Debes completar todos los campos");
-                    Response.Redirect("Error.aspx", false);
-                }
-                nuevo.Email = TxtEmail.Text;
-                nuevo.Contraseña = TxtContraseña.Text;
-                if (negocio.email(nuevo.Email))
-                {
-                    negocio.Registrarse(nuevo);
-                    Response.Redirect("Loguearse.aspx", false);
+                    if (negocio.Email(TxtEmail.Text))
+                    {
+                        nuevo.Email=TxtEmail.Text;
+                        nuevo.Contraseña = TxtContraseña.Text;
+                        negocio.Registrarse(nuevo);
+                        Response.Redirect("Loguearse.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("Error", "Este email ya esta registrado");
+                        Response.Redirect("Error.aspx", false);
+                    }
                 }
                 else
                 {
-                    Session.Add("Error", "Este email ya esta registrado");
-                    Response.Redirect("Error.aspx",false);
-                }
+                    Session.Add("Error", "Debes completar todos los campos");
+                    Response.Redirect("Error.aspx", false);
+                }     
             }
             catch (Exception ex)
             {

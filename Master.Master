@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
+                        <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                         <a class="nav-link" href="EditarMiPerfil.aspx" id="BtnMiPerfil" runat="server">Mi Perfil</a>
                         <a class="nav-link" href="MisFavoritos.aspx" id="BtnMisFavoritos" runat="server">Mis Favoritos</a>
                         <a class="nav-link" href="EditarCatalogo.aspx" id="BtnEditarCatalogo" runat="server">EditarCatalogo</a>

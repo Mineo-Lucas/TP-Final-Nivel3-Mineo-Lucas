@@ -23,7 +23,7 @@ namespace Metodos_y_Conexion
             catch (Exception ex)
             {
                 throw ex;
-            } 
+            }
         }
         public bool Admin(User Logueado)
         {
@@ -41,23 +41,47 @@ namespace Metodos_y_Conexion
                 throw ex;
             }
         }
-        public bool EmailVacio()
+        public bool Contraseña(string contraseña, int id)
         {
-            
-            return false;
+            ConexionDB conec = new ConexionDB();
+            try
+            {
+                conec.setearconsulta("select pass from USERS where Id= @Id");
+                conec.setearparametros("@Id", id);
+                conec.ejecutarlectura();
+                if (conec.Lector.Read())
+                {
+                    string contra = conec.Lector["pass"].ToString();
+                    if (contraseña== contra)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
-        public bool EmailRepetido(string email)
+        public bool ValidarVacioNull(string text)
         {
-            ConexionDB conexion = new ConexionDB();
-            conexion.setearconsulta("select email from USERS where email=@email");
-            conexion.setearparametros("@Email", email);
-            conexion.ejecutarlectura();
-            if (conexion.Lector.Read())
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+            else
             {
                 return true;
             }
-            return false;
         }
     }
-    
 }

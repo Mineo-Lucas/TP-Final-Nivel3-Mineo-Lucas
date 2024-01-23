@@ -32,7 +32,7 @@
     </div>
     <div>
         <asp:Button ID="BtnEliminarFavorito" runat="server" Text="Eliminar de favoritos" CssClass="btn btn-danger" OnClick="BtnEliminarFavorito_Click"/>
-        <a href="MisFavoritos.aspx">Volver</a>
+        <a href="Default.aspx">Volver</a>
     </div>
         </figure>
 </asp:Content>

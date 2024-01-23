@@ -16,7 +16,7 @@
     </div>
      <div>
         <asp:Label ID="Label4" runat="server" Text="Precio:"></asp:Label>
-        <asp:Label ID="LblPrecio" runat="server" Text=""></asp:Label>
+        <asp:Label ID="LblPrecio" runat="server" Text="" DataFormatString="{0:F2}"></asp:Label>
     </div>
      <div>
         <asp:Label ID="Label7" runat="server" Text="Codigo"></asp:Label>
@@ -32,7 +32,7 @@
     </div>
     <div>
         <asp:Button ID="BtnAgregarFavorito" runat="server" Text="Agregar a favoritos" CssClass="btn btn-warning" OnClick="BtnAgregarFavorito_Click"/>
-        <a href="Home.aspx">Volver</a>
+        <a href="Default.aspx">Volver</a>
     </div>
         </figure>
 </asp:Content>

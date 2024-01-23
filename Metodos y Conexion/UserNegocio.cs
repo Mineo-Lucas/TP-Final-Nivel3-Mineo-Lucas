@@ -37,7 +37,7 @@ namespace Metodos_y_Conexion
             ConexionDB conec = new ConexionDB();
             try
             {
-                conec.setearconsulta("select Id,email,pass,nombre,apellido,urlImagenPerfil,administrador from USERS where email= @Email and pass=@Contraseña");
+                conec.setearconsulta("select Id,email,pass,nombre,apellido,urlImagenPerfil,admin from USERS where email= @Email and pass=@Contraseña");
                 conec.setearparametros("@Email", logueado.Email);
                 conec.setearparametros("@Contraseña", logueado.Contraseña);
                 conec.ejecutarlectura();
@@ -46,7 +46,7 @@ namespace Metodos_y_Conexion
                     logueado.Nombre = conec.Lector["nombre"].ToString();
                     logueado.Apellido = conec.Lector["apellido"].ToString();
                     logueado.Imagen = conec.Lector["urlImagenPerfil"].ToString();
-                    logueado.Admin = (bool)conec.Lector["administrador"];
+                    logueado.Admin = (bool)conec.Lector["admin"];
                     logueado.Id = int.Parse(conec.Lector["Id"].ToString());
                     return true;
                 }
@@ -85,13 +85,13 @@ namespace Metodos_y_Conexion
                 conectar.cerrarconexion();
             }
         }
-        public bool email(string email)
+        public bool Email(string email)
         {
             ConexionDB conec = new ConexionDB();
             try
             {
-                conec.setearconsulta("select email from USERS where email= @Email");
-                conec.setearparametros("@Email", email);
+                conec.setearconsulta("select email from USERS where email= @mail");
+                conec.setearparametros("@mail", email);
                 conec.ejecutarlectura();
                 if (conec.Lector.Read())
                 {
@@ -103,6 +103,26 @@ namespace Metodos_y_Conexion
             {
 
                 throw ex;
+            }
+        }
+        public void CambiarContraseña(int Id, string contraseñanueva)
+        {
+            ConexionDB conectar = new ConexionDB();
+            try
+            {
+                conectar.setearconsulta("update USERS set pass = @Contraseña where Id = @Id");
+                conectar.setearparametros("@Contraseña", contraseñanueva);
+                conectar.setearparametros("@Id", Id);
+                conectar.ejecutaraccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conectar.cerrarconexion();
             }
         }
     }

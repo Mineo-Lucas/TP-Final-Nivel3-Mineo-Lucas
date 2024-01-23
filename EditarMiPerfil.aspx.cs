@@ -75,13 +75,18 @@ namespace CatalogoWeb
                 {
                     ImgImagen.ImageUrl = "~/Imagen/" + Logueado.Imagen + "?v=" + DateTime.Now.Ticks.ToString();
                 }
-                Response.Redirect("Home.aspx", false);
+                Response.Redirect("Default.aspx", false);
             }
             catch (Exception ex)
             {
                 Session.Add("Error", ex.ToString());
                 Response.Redirect("error.aspx", false);
             }
+        }
+
+        protected void BtnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CambiarContrasena.aspx", false);
         }
     }
 }

@@ -20,26 +20,29 @@ namespace CatalogoWeb
         {
             UserNegocio conectar = new UserNegocio();
             User logueado = new User();
-            Validaciones validaciones = new Validaciones();
+            Seguridad seguridad = new Seguridad();
             try
             {
-                if (validaciones.ValidarVacioNull(TxtEmail.Text) || validaciones.ValidarVacioNull(TxtContraseña.Text))
+                if (seguridad.ValidarVacioNull(TxtEmail.Text) && seguridad.ValidarVacioNull(TxtContraseña.Text))
                 {
-                    Session.Add("Error", "Debes completar todos los campos");
-                    Response.Redirect("Error.aspx", false);
-                }
-                logueado.Email = TxtEmail.Text;
-                logueado.Contraseña = TxtContraseña.Text;
-                if (conectar.Loguearse(logueado))
-                {
-                    Session.Add("Logueado", logueado);
-                    Response.Redirect("Home.aspx", false);
+                    logueado.Email = TxtEmail.Text;
+                    logueado.Contraseña = TxtContraseña.Text;
+                    if (conectar.Loguearse(logueado))
+                    {
+                        Session.Add("Logueado", logueado);
+                        Response.Redirect("Default.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("Error", "Usuario o contraseña incorrectos");
+                        Response.Redirect("Error.aspx", false);
+                    }
                 }
                 else
                 {
-                    Session.Add("Error", "Usuario o contraseña incorrectos");
+                    Session.Add("Error", "Debes completar todos los campos");
                     Response.Redirect("Error.aspx", false);
-                }
+                }    
             }
             catch (Exception ex)
             {

@@ -34,7 +34,7 @@ namespace CatalogoWeb
                     LblNombre.Text = Seleccionado.Nombre;
                     LblDescripcion.Text = Seleccionado.Descripcion;
                     LblCodigo.Text = Seleccionado.Codigo;
-                    LblPrecio.Text = Seleccionado.Precio.ToString();
+                    LblPrecio.Text ="$"+ Seleccionado.Precio.ToString();
                     LblMarca.Text = Seleccionado.Marca.ToString();
                     LblCategoria.Text = Seleccionado.categoria.ToString();
                     ImgArticulo.ImageUrl = Seleccionado.Imagen;

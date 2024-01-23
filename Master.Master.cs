@@ -21,7 +21,7 @@ namespace CatalogoWeb
             BtnMisFavoritos.Visible = false;
             ImgAvatar.Visible = false;
             BtnMiPerfil.Visible = false;
-            if (!(Page is Home || Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is VerDetalles))
+            if (!(Page is Default|| Page is Registrarse || Page is Loguearse || Page is VerDetalles || Page is Error || Page is VerDetalles))
             {
                 if (!seguridad.SesionActiva((User)Session["Logueado"]))
                 {
@@ -69,7 +69,7 @@ namespace CatalogoWeb
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("Home.aspx", false);
+            Response.Redirect("Default.aspx", false);
         }
     }
 }
